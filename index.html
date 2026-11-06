@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ATCE Student Portal</title>
+<link rel="icon" id="dfIcon" href="data:,">
+<script>var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1})},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(o*r,n*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(){var t=n("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});</script>
+<style>/*! tailwindcss v4.3.4 | MIT License | https://tailwindcss.com */
+@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:block))) or ((-moz-orient:inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-translate-x:0;--tw-translate-y:0;--tw-translate-z:0;--tw-rotate-x:initial;--tw-rotate-y:initial;--tw-rotate-z:initial;--tw-skew-x:initial;--tw-skew-y:initial;--tw-space-y-reverse:0;--tw-divide-y-reverse:0;--tw-border-style:solid;--tw-gradient-position:initial;--tw-gradient-from:#0000;--tw-gradient-via:#0000;--tw-gradient-to:#0000;--tw-gradient-stops:initial;--tw-gradient-via-stops:initial;--tw-gradient-from-position:0%;--tw-gradient-via-position:50%;--tw-gradient-to-position:100%;--tw-leading:initial;--tw-font-weight:initial;--tw-tracking:initial;--tw-shadow:0 0 #0000;--tw-shadow-color:initial;--tw-shadow-alpha:100%;--tw-inset-shadow:0 0 #0000;--tw-inset-shadow-color:initial;--tw-inset-shadow-alpha:100%;--tw-ring-color:initial;--tw-ring-shadow:0 0 #0000;--tw-inset-ring-color:initial;--tw-inset-ring-shadow:0 0 #0000;--tw-ring-inset:initial;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-offset-shadow:0 0 #0000;--tw-backdrop-blur:initial;--tw-backdrop-brightness:initial;--tw-backdrop-contrast:initial;--tw-backdrop-grayscale:initial;--tw-backdrop-hue-rotate:initial;--tw-backdrop-invert:initial;--tw-backdrop-opacity:initial;--tw-backdrop-saturate:initial;--tw-backdrop-sepia:initial;--tw-duration:initial;--tw-ease:initial}}}@layer theme{:root,:host{--font-sans:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--font-mono:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--color-red-50:oklch(97.1% .013 17.38);--color-red-100:oklch(93.6% .032 17.717);--color-red-200:oklch(88.5% .062 18.334);--color-red-300:oklch(80.8% .114 19.571);--color-red-400:oklch(70.4% .191 22.216);--color-red-500:oklch(63.7% .237 25.331);--color-red-700:oklch(50.5% .213 27.518);--color-orange-500:oklch(70.5% .213 47.604);--color-amber-50:oklch(98.7% .022 95.277);--color-amber-100:oklch(96.2% .059 95.617);--color-amber-500:oklch(76.9% .188 70.08);--color-amber-800:oklch(47.3% .137 46.201);--color-emerald-50:oklch(97.9% .021 166.113);--color-emerald-100:oklch(95% .052 163.051);--color-emerald-300:oklch(84.5% .143 164.978);--color-emerald-400:oklch(76.5% .177 163.223);--color-emerald-500:oklch(69.6% .17 162.48);--color-emerald-600:oklch(59.6% .145 163.225);--color-emerald-700:oklch(50.8% .118 165.612);--color-sky-50:oklch(97.7% .013 236.62);--color-sky-100:oklch(95.1% .026 236.824);--color-sky-200:oklch(90.1% .058 230.902);--color-sky-300:oklch(82.8% .111 230.318);--color-sky-500:oklch(68.5% .169 237.323);--color-blue-50:oklch(97% .014 254.604);--color-blue-100:oklch(93.2% .032 255.585);--color-blue-200:oklch(88.2% .059 254.128);--color-blue-400:oklch(70.7% .165 254.624);--color-blue-600:oklch(54.6% .245 262.881);--color-blue-700:oklch(48.8% .243 264.376);--color-blue-800:oklch(42.4% .199 265.638);--color-indigo-50:oklch(96.2% .018 272.314);--color-gray-50:oklch(98.5% .002 247.839);--color-gray-100:oklch(96.7% .003 264.542);--color-gray-200:oklch(92.8% .006 264.531);--color-gray-300:oklch(87.2% .01 258.338);--color-gray-400:oklch(70.7% .022 261.325);--color-gray-500:oklch(55.1% .027 264.364);--color-gray-600:oklch(44.6% .03 256.802);--color-gray-700:oklch(37.3% .034 259.733);--color-gray-800:oklch(27.8% .033 256.848);--color-gray-900:oklch(21% .034 264.665);--color-white:#fff;--spacing:.25rem;--container-md:28rem;--container-2xl:42rem;--container-3xl:48rem;--text-xs:.75rem;--text-xs--line-height:calc(1 / .75);--text-sm:.875rem;--text-sm--line-height:calc(1.25 / .875);--text-base:1rem;--text-base--line-height:calc(1.5 / 1);--text-lg:1.125rem;--text-lg--line-height:calc(1.75 / 1.125);--text-xl:1.25rem;--text-xl--line-height:calc(1.75 / 1.25);--text-2xl:1.5rem;--text-2xl--line-height:calc(2 / 1.5);--text-3xl:1.875rem;--text-3xl--line-height:calc(2.25 / 1.875);--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--tracking-tight:-.025em;--tracking-wide:.025em;--tracking-wider:.05em;--tracking-widest:.1em;--leading-tight:1.25;--leading-relaxed:1.625;--radius-lg:.5rem;--radius-xl:.75rem;--radius-2xl:1rem;--ease-in-out:cubic-bezier(.4, 0, .2, 1);--default-transition-duration:.15s;--default-transition-timing-function:cubic-bezier(.4, 0, .2, 1);--default-font-family:var(--font-sans);--default-mono-font-family:var(--font-mono)}}@layer base{*,:after,:before,::backdrop{box-sizing:border-box;border:0 solid;margin:0;padding:0}::file-selector-button{box-sizing:border-box;border:0 solid;margin:0;padding:0}html,:host{-webkit-text-size-adjust:100%;tab-size:4;line-height:1.5;font-family:var(--default-font-family,-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings,normal);font-variation-settings:var(--default-font-variation-settings,normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family,ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings,normal);font-variation-settings:var(--default-mono-font-variation-settings,normal);font-size:1em}small{font-size:80%}sub,sup{vertical-align:baseline;font-size:75%;line-height:0;position:relative}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring:where(:not(iframe)){outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{vertical-align:middle;display:block}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;opacity:1;background-color:#0000;border-radius:0}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not ((-webkit-appearance:-apple-pay-button))) or (contain-intrinsic-size:1px){::placeholder{color:currentColor}@supports (color:color-mix(in lab, red, red)){::placeholder{color:color-mix(in oklab, currentcolor 50%, transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit{padding-block:0}::-webkit-datetime-edit-year-field{padding-block:0}::-webkit-datetime-edit-month-field{padding-block:0}::-webkit-datetime-edit-day-field{padding-block:0}::-webkit-datetime-edit-hour-field{padding-block:0}::-webkit-datetime-edit-minute-field{padding-block:0}::-webkit-datetime-edit-second-field{padding-block:0}::-webkit-datetime-edit-millisecond-field{padding-block:0}::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]){appearance:button}::file-selector-button{appearance:button}::-webkit-inner-spin-button{height:auto}::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer components;@layer utilities{.pointer-events-none{pointer-events:none}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.-top-0\.5{top:calc(var(--spacing) * -.5)}.top-0{top:0}.-right-0\.5{right:calc(var(--spacing) * -.5)}.left-0{left:0}.z-20{z-index:20}.z-40{z-index:40}.mx-auto{margin-inline:auto}.mt-0\.5{margin-top:calc(var(--spacing) * .5)}.mt-1{margin-top:var(--spacing)}.mt-1\.5{margin-top:calc(var(--spacing) * 1.5)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-3{margin-top:calc(var(--spacing) * 3)}.mt-4{margin-top:calc(var(--spacing) * 4)}.mt-5{margin-top:calc(var(--spacing) * 5)}.mt-6{margin-top:calc(var(--spacing) * 6)}.mb-1{margin-bottom:var(--spacing)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-3{margin-bottom:calc(var(--spacing) * 3)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.mb-5{margin-bottom:calc(var(--spacing) * 5)}.mb-6{margin-bottom:calc(var(--spacing) * 6)}.mb-8{margin-bottom:calc(var(--spacing) * 8)}.ml-2{margin-left:calc(var(--spacing) * 2)}.ml-auto{margin-left:auto}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline-flex{display:inline-flex}.table{display:table}.h-4{height:calc(var(--spacing) * 4)}.h-5{height:calc(var(--spacing) * 5)}.h-8{height:calc(var(--spacing) * 8)}.h-10{height:calc(var(--spacing) * 10)}.h-16{height:calc(var(--spacing) * 16)}.h-\[18px\]{height:18px}.h-full{height:100%}.h-screen{height:100vh}.min-h-screen{min-height:100vh}.w-4{width:calc(var(--spacing) * 4)}.w-5{width:calc(var(--spacing) * 5)}.w-8{width:calc(var(--spacing) * 8)}.w-10{width:calc(var(--spacing) * 10)}.w-16{width:calc(var(--spacing) * 16)}.w-64{width:calc(var(--spacing) * 64)}.w-\[18px\]{width:18px}.w-full{width:100%}.max-w-2xl{max-width:var(--container-2xl)}.max-w-3xl{max-width:var(--container-3xl)}.max-w-md{max-width:var(--container-md)}.min-w-0{min-width:0}.flex-1{flex:1}.flex-shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.-translate-x-full{--tw-translate-x:-100%;translate:var(--tw-translate-x) var(--tw-translate-y)}.transform{transform:var(--tw-rotate-x, ) var(--tw-rotate-y, ) var(--tw-rotate-z, ) var(--tw-skew-x, ) var(--tw-skew-y, )}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.gap-2{gap:calc(var(--spacing) * 2)}.gap-3{gap:calc(var(--spacing) * 3)}.gap-4{gap:calc(var(--spacing) * 4)}:where(.space-y-1>:not(:last-child)){--tw-space-y-reverse:0;margin-block-start:calc(var(--spacing) * var(--tw-space-y-reverse));margin-block-end:calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)))}:where(.divide-y>:not(:last-child)){--tw-divide-y-reverse:0;border-bottom-style:var(--tw-border-style);border-top-style:var(--tw-border-style);border-top-width:calc(1px * var(--tw-divide-y-reverse));border-bottom-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)))}:where(.divide-gray-50>:not(:last-child)){border-color:var(--color-gray-50)}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:var(--radius-2xl)}.rounded-full{border-radius:2147483647px}.rounded-lg{border-radius:var(--radius-lg)}.rounded-xl{border-radius:var(--radius-xl)}.border{border-style:var(--tw-border-style);border-width:1px}.border-2{border-style:var(--tw-border-style);border-width:2px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-l{border-left-style:var(--tw-border-style);border-left-width:1px}.border-amber-100{border-color:var(--color-amber-100)}.border-blue-100{border-color:var(--color-blue-100)}.border-emerald-100{border-color:var(--color-emerald-100)}.border-emerald-400\/30{border-color:#00d2944d}@supports (color:color-mix(in lab, red, red)){.border-emerald-400\/30{border-color:color-mix(in oklab, var(--color-emerald-400) 30%, transparent)}}.border-gray-50{border-color:var(--color-gray-50)}.border-gray-100{border-color:var(--color-gray-100)}.border-gray-200{border-color:var(--color-gray-200)}.border-red-100{border-color:var(--color-red-100)}.border-red-200{border-color:var(--color-red-200)}.border-red-400\/30{border-color:#ff65684d}@supports (color:color-mix(in lab, red, red)){.border-red-400\/30{border-color:color-mix(in oklab, var(--color-red-400) 30%, transparent)}}.border-sky-100{border-color:var(--color-sky-100)}.border-white\/10{border-color:#ffffff1a}@supports (color:color-mix(in lab, red, red)){.border-white\/10{border-color:color-mix(in oklab, var(--color-white) 10%, transparent)}}.border-white\/30{border-color:#ffffff4d}@supports (color:color-mix(in lab, red, red)){.border-white\/30{border-color:color-mix(in oklab, var(--color-white) 30%, transparent)}}.bg-\[\#2980b9\]{background-color:#2980b9}.bg-amber-50{background-color:var(--color-amber-50)}.bg-blue-50{background-color:var(--color-blue-50)}.bg-blue-600{background-color:var(--color-blue-600)}.bg-emerald-50{background-color:var(--color-emerald-50)}.bg-emerald-100{background-color:var(--color-emerald-100)}.bg-emerald-500\/10{background-color:#00bb7f1a}@supports (color:color-mix(in lab, red, red)){.bg-emerald-500\/10{background-color:color-mix(in oklab, var(--color-emerald-500) 10%, transparent)}}.bg-gray-50{background-color:var(--color-gray-50)}.bg-red-50{background-color:var(--color-red-50)}.bg-red-500{background-color:var(--color-red-500)}.bg-red-500\/10{background-color:#fb2c361a}@supports (color:color-mix(in lab, red, red)){.bg-red-500\/10{background-color:color-mix(in oklab, var(--color-red-500) 10%, transparent)}}.bg-white{background-color:var(--color-white)}.bg-white\/15{background-color:#ffffff26}@supports (color:color-mix(in lab, red, red)){.bg-white\/15{background-color:color-mix(in oklab, var(--color-white) 15%, transparent)}}.bg-gradient-to-r{--tw-gradient-position:to right in oklab;background-image:linear-gradient(var(--tw-gradient-stops))}.from-blue-600{--tw-gradient-from:var(--color-blue-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-emerald-600{--tw-gradient-from:var(--color-emerald-600);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-orange-500{--tw-gradient-from:var(--color-orange-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.from-sky-50{--tw-gradient-from:var(--color-sky-50);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.via-white{--tw-gradient-via:var(--color-white);--tw-gradient-via-stops:var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-via-stops)}.to-amber-500{--tw-gradient-to:var(--color-amber-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-emerald-500{--tw-gradient-to:var(--color-emerald-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-indigo-50{--tw-gradient-to:var(--color-indigo-50);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.to-sky-500{--tw-gradient-to:var(--color-sky-500);--tw-gradient-stops:var(--tw-gradient-via-stops,var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))}.object-contain{object-fit:contain}.p-2{padding:calc(var(--spacing) * 2)}.p-3{padding:calc(var(--spacing) * 3)}.p-4{padding:calc(var(--spacing) * 4)}.p-5{padding:calc(var(--spacing) * 5)}.p-6{padding:calc(var(--spacing) * 6)}.p-10{padding:calc(var(--spacing) * 10)}.p-12{padding:calc(var(--spacing) * 12)}.px-3{padding-inline:calc(var(--spacing) * 3)}.px-4{padding-inline:calc(var(--spacing) * 4)}.px-5{padding-inline:calc(var(--spacing) * 5)}.py-1\.5{padding-block:calc(var(--spacing) * 1.5)}.py-2\.5{padding-block:calc(var(--spacing) * 2.5)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-4{padding-block:calc(var(--spacing) * 4)}.py-5{padding-block:calc(var(--spacing) * 5)}.py-6{padding-block:calc(var(--spacing) * 6)}.pt-2{padding-top:calc(var(--spacing) * 2)}.pb-1{padding-bottom:var(--spacing)}.pl-2{padding-left:calc(var(--spacing) * 2)}.text-center{text-align:center}.text-left{text-align:left}.text-right{text-align:right}.font-mono{font-family:var(--font-mono)}.text-3xl{font-size:var(--text-3xl);line-height:var(--tw-leading,var(--text-3xl--line-height))}.text-base{font-size:var(--text-base);line-height:var(--tw-leading,var(--text-base--line-height))}.text-lg{font-size:var(--text-lg);line-height:var(--tw-leading,var(--text-lg--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading,var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading,var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading,var(--text-xs--line-height))}.text-\[9px\]{font-size:9px}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.leading-relaxed{--tw-leading:var(--leading-relaxed);line-height:var(--leading-relaxed)}.leading-tight{--tw-leading:var(--leading-tight);line-height:var(--leading-tight)}.font-bold{--tw-font-weight:var(--font-weight-bold);font-weight:var(--font-weight-bold)}.font-extrabold{--tw-font-weight:var(--font-weight-extrabold);font-weight:var(--font-weight-extrabold)}.font-medium{--tw-font-weight:var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight:var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-tight{--tw-tracking:var(--tracking-tight);letter-spacing:var(--tracking-tight)}.tracking-wide{--tw-tracking:var(--tracking-wide);letter-spacing:var(--tracking-wide)}.tracking-wider{--tw-tracking:var(--tracking-wider);letter-spacing:var(--tracking-wider)}.tracking-widest{--tw-tracking:var(--tracking-widest);letter-spacing:var(--tracking-widest)}.text-amber-800{color:var(--color-amber-800)}.text-blue-200\/50{color:#bedbff80}@supports (color:color-mix(in lab, red, red)){.text-blue-200\/50{color:color-mix(in oklab, var(--color-blue-200) 50%, transparent)}}.text-blue-600{color:var(--color-blue-600)}.text-blue-700{color:var(--color-blue-700)}.text-blue-800{color:var(--color-blue-800)}.text-emerald-300{color:var(--color-emerald-300)}.text-emerald-700{color:var(--color-emerald-700)}.text-gray-300{color:var(--color-gray-300)}.text-gray-400{color:var(--color-gray-400)}.text-gray-500{color:var(--color-gray-500)}.text-gray-600{color:var(--color-gray-600)}.text-gray-700{color:var(--color-gray-700)}.text-gray-800{color:var(--color-gray-800)}.text-gray-900{color:var(--color-gray-900)}.text-red-300{color:var(--color-red-300)}.text-red-700{color:var(--color-red-700)}.text-sky-200{color:var(--color-sky-200)}.text-sky-300{color:var(--color-sky-300)}.text-sky-300\/30{color:#77d4ff4d}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/30{color:color-mix(in oklab, var(--color-sky-300) 30%, transparent)}}.text-sky-300\/40{color:#77d4ff66}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/40{color:color-mix(in oklab, var(--color-sky-300) 40%, transparent)}}.text-sky-300\/50{color:#77d4ff80}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/50{color:color-mix(in oklab, var(--color-sky-300) 50%, transparent)}}.text-sky-300\/60{color:#77d4ff99}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/60{color:color-mix(in oklab, var(--color-sky-300) 60%, transparent)}}.text-sky-300\/70{color:#77d4ffb3}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/70{color:color-mix(in oklab, var(--color-sky-300) 70%, transparent)}}.text-sky-300\/80{color:#77d4ffcc}@supports (color:color-mix(in lab, red, red)){.text-sky-300\/80{color:color-mix(in oklab, var(--color-sky-300) 80%, transparent)}}.text-white{color:var(--color-white)}.uppercase{text-transform:uppercase}.underline{text-decoration-line:underline}.opacity-10{opacity:.1}.shadow-2xl{--tw-shadow:0 25px 50px -12px var(--tw-shadow-color,#00000040);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px var(--tw-shadow-color,#0000001a), 0 8px 10px -6px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, );backdrop-filter:var(--tw-backdrop-blur, ) var(--tw-backdrop-brightness, ) var(--tw-backdrop-contrast, ) var(--tw-backdrop-grayscale, ) var(--tw-backdrop-hue-rotate, ) var(--tw-backdrop-invert, ) var(--tw-backdrop-opacity, ) var(--tw-backdrop-saturate, ) var(--tw-backdrop-sepia, )}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-all{transition-property:all;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-colors{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.transition-transform{transition-property:transform,translate,scale,rotate;transition-timing-function:var(--tw-ease,var(--default-transition-timing-function));transition-duration:var(--tw-duration,var(--default-transition-duration))}.duration-200{--tw-duration:.2s;transition-duration:.2s}.ease-in-out{--tw-ease:var(--ease-in-out);transition-timing-function:var(--ease-in-out)}.outline-none{--tw-outline-style:none;outline-style:none}@media (hover:hover){:is(:where(.group):hover .group-hover\:text-red-500){color:var(--color-red-500)}.hover\:bg-blue-100:hover{background-color:var(--color-blue-100)}.hover\:bg-blue-700:hover{background-color:var(--color-blue-700)}.hover\:bg-gray-100:hover{background-color:var(--color-gray-100)}.hover\:text-sky-200:hover{color:var(--color-sky-200)}.hover\:underline:hover{text-decoration-line:underline}.hover\:shadow-lg:hover{--tw-shadow:0 10px 15px -3px var(--tw-shadow-color,#0000001a), 0 4px 6px -4px var(--tw-shadow-color,#0000001a);box-shadow:var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}}.focus\:border-blue-400:focus{border-color:var(--color-blue-400)}@media (min-width:40rem){.sm\:mt-6{margin-top:calc(var(--spacing) * 6)}.sm\:mb-4{margin-bottom:calc(var(--spacing) * 4)}.sm\:h-20{height:calc(var(--spacing) * 20)}.sm\:w-20{width:calc(var(--spacing) * 20)}.sm\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.sm\:p-6{padding:calc(var(--spacing) * 6)}.sm\:p-7{padding:calc(var(--spacing) * 7)}.sm\:text-2xl{font-size:var(--text-2xl);line-height:var(--tw-leading,var(--text-2xl--line-height))}}@media (min-width:48rem){.md\:block{display:block}.md\:grid-cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}.md\:gap-4{gap:calc(var(--spacing) * 4)}.md\:pl-4{padding-left:calc(var(--spacing) * 4)}}@media (min-width:64rem){.lg\:sticky{position:sticky}.lg\:hidden{display:none}.lg\:translate-x-0{--tw-translate-x:0px;translate:var(--tw-translate-x) var(--tw-translate-y)}.lg\:p-6{padding:calc(var(--spacing) * 6)}.lg\:px-6{padding-inline:calc(var(--spacing) * 6)}}}@property --tw-translate-x{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-y{syntax:"*";inherits:false;initial-value:0}@property --tw-translate-z{syntax:"*";inherits:false;initial-value:0}@property --tw-rotate-x{syntax:"*";inherits:false}@property --tw-rotate-y{syntax:"*";inherits:false}@property --tw-rotate-z{syntax:"*";inherits:false}@property --tw-skew-x{syntax:"*";inherits:false}@property --tw-skew-y{syntax:"*";inherits:false}@property --tw-space-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-divide-y-reverse{syntax:"*";inherits:false;initial-value:0}@property --tw-border-style{syntax:"*";inherits:false;initial-value:solid}@property --tw-gradient-position{syntax:"*";inherits:false}@property --tw-gradient-from{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-via{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-to{syntax:"<color>";inherits:false;initial-value:#0000}@property --tw-gradient-stops{syntax:"*";inherits:false}@property --tw-gradient-via-stops{syntax:"*";inherits:false}@property --tw-gradient-from-position{syntax:"<length-percentage>";inherits:false;initial-value:0%}@property --tw-gradient-via-position{syntax:"<length-percentage>";inherits:false;initial-value:50%}@property --tw-gradient-to-position{syntax:"<length-percentage>";inherits:false;initial-value:100%}@property --tw-leading{syntax:"*";inherits:false}@property --tw-font-weight{syntax:"*";inherits:false}@property --tw-tracking{syntax:"*";inherits:false}@property --tw-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-shadow-color{syntax:"*";inherits:false}@property --tw-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-inset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-shadow-color{syntax:"*";inherits:false}@property --tw-inset-shadow-alpha{syntax:"<percentage>";inherits:false;initial-value:100%}@property --tw-ring-color{syntax:"*";inherits:false}@property --tw-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-inset-ring-color{syntax:"*";inherits:false}@property --tw-inset-ring-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-ring-inset{syntax:"*";inherits:false}@property --tw-ring-offset-width{syntax:"<length>";inherits:false;initial-value:0}@property --tw-ring-offset-color{syntax:"*";inherits:false;initial-value:#fff}@property --tw-ring-offset-shadow{syntax:"*";inherits:false;initial-value:0 0 #0000}@property --tw-backdrop-blur{syntax:"*";inherits:false}@property --tw-backdrop-brightness{syntax:"*";inherits:false}@property --tw-backdrop-contrast{syntax:"*";inherits:false}@property --tw-backdrop-grayscale{syntax:"*";inherits:false}@property --tw-backdrop-hue-rotate{syntax:"*";inherits:false}@property --tw-backdrop-invert{syntax:"*";inherits:false}@property --tw-backdrop-opacity{syntax:"*";inherits:false}@property --tw-backdrop-saturate{syntax:"*";inherits:false}@property --tw-backdrop-sepia{syntax:"*";inherits:false}@property --tw-duration{syntax:"*";inherits:false}@property --tw-ease{syntax:"*";inherits:false}</style>
+<style>
+
+.df-tag{display:inline-flex;align-items:center;padding:1px 6px;border-radius:9999px;font-size:8.5px;font-weight:800;letter-spacing:.04em;white-space:nowrap;line-height:1.5;text-transform:uppercase}
+.df-free{background:#dcfce7;color:#166534}.df-data{background:#fef3c7;color:#92400e}
+.df-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid #e2e8f0;border-radius:9999px;font-size:11px;font-weight:600;color:#475569;background:#fff;max-width:46vw}
+.df-pill span#dfSyncTxt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#sidebar .df-tag{font-size:7.5px;padding:1px 5px}
+#sidebar .sidebar-link{column-gap:.6rem}
+@media(max-width:480px){.df-pill{max-width:38vw;padding:4px 8px}}
+#dfDot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex:none}
+#dfPageTag{display:inline-flex;gap:4px;flex-wrap:wrap}
+* { font-family: system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+@media print { .no-print { display: none !important; } }
+.sidebar-link { transition: all 0.2s ease; }
+.sidebar-link:hover, .sidebar-link.active { background: linear-gradient(135deg, #1e3a5f 0%, #1a4975 100%); color: #fff; box-shadow: 0 2px 8px rgba(30,58,95,0.3); }
+.sidebar-link.active { border-right: 3px solid #38bdf8; }
+.fade-in { animation: fadeIn 0.3s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.card-hover { transition: all 0.25s ease; }
+.card-hover:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.badge { display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.badge-green { background: #dcfce7; color: #166534; }
+.badge-red { background: #fee2e2; color: #991b1b; }
+.badge-yellow { background: #fef9c3; color: #854d0e; }
+.badge-blue { background: #dbeafe; color: #1e40af; }
+.badge-gray { background: #f1f5f9; color: #475569; }
+.badge-purple { background: #f3e8ff; color: #6b21a8; }
+.badge-orange { background: #ffedd5; color: #c2410c; }
+.mobile-overlay { display: none; }
+@media (max-width: 1024px) { .mobile-overlay.active { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 30; } }
+#sidebar { background: linear-gradient(180deg, #0a1929 0%, #0f2744 40%, #132f52 100%); }
+#sidebar::before { content: ''; position: absolute; inset: 0; opacity: 0.18; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'%3E%3C!-- Open Book --%3E%3Cpath d='M20 40 L20 20 Q30 16 40 20 L40 40 M20 20 Q30 24 40 20 M20 26 Q30 30 40 26 M20 32 Q30 36 40 32'/%3E%3C!-- Graduation Cap --%3E%3Cpath d='M80 25 L65 32 L80 39 L95 32 Z M80 39 L80 46 M70 34 L70 42 Q80 48 90 42 L90 34'/%3E%3C!-- Pencil --%3E%3Cpath d='M140 18 L148 18 L150 22 L148 26 L140 26 Z M140 20 L134 20 L132 22 L134 24 L140 24 M150 22 L154 22'/%3E%3C!-- Lightbulb --%3E%3Cpath d='M25 80 Q25 68 35 65 Q45 68 45 80 Q45 85 40 88 L40 94 L30 94 L30 88 Q25 85 25 80Z M32 94 L32 97 L38 97 L38 94 M33 91 L37 91'/%3E%3C!-- Certificate/Scroll --%3E%3Cpath d='M70 70 L100 70 L100 95 L70 95Z M73 76 L97 76 M73 80 L97 80 M73 84 L90 84 M82 88 L88 88 Q90 90 88 92 Q86 90 82 92 Q80 90 82 88Z'/%3E%3C!-- Atom/Science --%3E%3Ccircle cx='145' cy='80' r='2.5'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(0 145 80)'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(60 145 80)'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(-60 145 80)'/%3E%3C!-- Laptop/Screen --%3E%3Cpath d='M18 120 L52 120 L52 142 L18 142Z M14 142 L56 142 L54 146 L16 146Z M28 130 L42 130 M28 134 L38 134'/%3E%3C!-- Gear/Settings --%3E%3Ccircle cx='85' cy='135' r='5'/%3E%3Ccircle cx='85' cy='135' r='10' stroke-dasharray='4 3.5'/%3E%3C!-- Mortarboard Tassel --%3E%3Cpath d='M130 115 L150 115 L155 120 L150 125 L130 125 L125 120Z M140 125 L140 132 M136 132 L144 132 M140 115 L140 110 L145 108'/%3E%3C!-- Stack of Books --%3E%3Cpath d='M20 160 L50 160 L50 165 L20 165Z M22 155 L52 155 L52 160 L22 160Z M18 165 L48 165 L48 170 L18 170Z'/%3E%3C!-- WiFi/Signal --%3E%3Cpath d='M90 165 Q85 158 80 162 M90 165 Q95 158 100 162 M90 165 Q83 155 75 160 M90 165 Q97 155 105 160'/%3E%3Ccircle cx='90' cy='167' r='1.5'/%3E%3C!-- Globe --%3E%3Ccircle cx='145' cy='160' r='10'/%3E%3Cellipse cx='145' cy='160' rx='5' ry='10'/%3E%3Cpath d='M135 160 L155 160 M136 155 L154 155 M136 165 L154 165'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 180px 180px; }
+#sidebar > * { position: relative; z-index: 1; }
+
+/* Education SVG pattern for light backgrounds */
+:root {
+    --edu-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23334155' stroke-width='0.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 40 L20 20 Q30 16 40 20 L40 40 M20 20 Q30 24 40 20 M20 26 Q30 30 40 26 M20 32 Q30 36 40 32'/%3E%3Cpath d='M80 25 L65 32 L80 39 L95 32 Z M80 39 L80 46 M70 34 L70 42 Q80 48 90 42 L90 34'/%3E%3Cpath d='M140 18 L148 18 L150 22 L148 26 L140 26 Z M140 20 L134 20 L132 22 L134 24 L140 24 M150 22 L154 22'/%3E%3Cpath d='M25 80 Q25 68 35 65 Q45 68 45 80 Q45 85 40 88 L40 94 L30 94 L30 88 Q25 85 25 80Z M32 94 L32 97 L38 97 L38 94 M33 91 L37 91'/%3E%3Cpath d='M70 70 L100 70 L100 95 L70 95Z M73 76 L97 76 M73 80 L97 80 M73 84 L90 84 M82 88 L88 88 Q90 90 88 92 Q86 90 82 92 Q80 90 82 88Z'/%3E%3Ccircle cx='145' cy='80' r='2.5'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(60 145 80)'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(-60 145 80)'/%3E%3Cpath d='M18 120 L52 120 L52 142 L18 142Z M14 142 L56 142 L54 146 L16 146Z M28 130 L42 130 M28 134 L38 134'/%3E%3Ccircle cx='85' cy='135' r='5'/%3E%3Ccircle cx='85' cy='135' r='10' stroke-dasharray='4 3.5'/%3E%3Cpath d='M130 115 L150 115 L155 120 L150 125 L130 125 L125 120Z M140 125 L140 132 M136 132 L144 132 M140 115 L140 110 L145 108'/%3E%3Cpath d='M20 160 L50 160 L50 165 L20 165Z M22 155 L52 155 L52 160 L22 160Z M18 165 L48 165 L48 170 L18 170Z'/%3E%3Cpath d='M90 165 Q85 158 80 162 M90 165 Q95 158 100 162 M90 165 Q83 155 75 160 M90 165 Q97 155 105 160'/%3E%3Ccircle cx='90' cy='167' r='1.5'/%3E%3Ccircle cx='145' cy='160' r='10'/%3E%3Cellipse cx='145' cy='160' rx='5' ry='10'/%3E%3Cpath d='M135 160 L155 160 M136 155 L154 155 M136 165 L154 165'/%3E%3C/g%3E%3C/svg%3E");
+}
+#mainContent { background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); position: relative; }
+#mainContent::before { content: ''; position: absolute; inset: 0; opacity: 0.09; background-image: var(--edu-pattern); background-size: 180px 180px; pointer-events: none; z-index: 0; }
+#mainContent > * { position: relative; z-index: 1; }
+.bg-white { position: relative; }
+.bg-white::after { content: ''; position: absolute; inset: 0; opacity: 0.07; background-image: var(--edu-pattern); background-size: 180px 180px; pointer-events: none; border-radius: inherit; z-index: 0; }
+.bg-white > * { position: relative; z-index: 1; }
+#programmeModal .bg-white::after { display: none; }
+header { background: rgba(255,255,255,0.85) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.logo-icon { background: linear-gradient(135deg, #2980b9 0%, #38bdf8 100%); box-shadow: 0 0 20px rgba(56,189,248,0.3); }
+@keyframes notifPulse { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.4)} 50%{box-shadow:0 0 0 6px rgba(239,68,68,0)} }
+#notifBadge { animation: notifPulse 2s ease-in-out infinite; }
+.kpi-card { background: white; border-radius: 0.75rem; border: 1px solid #e2e8f0; overflow: hidden; position: relative; }
+.kpi-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.kpi-card.kpi-blue::before { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
+.kpi-card.kpi-emerald::before { background: linear-gradient(90deg, #10b981, #34d399); }
+.kpi-card.kpi-purple::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.kpi-card.kpi-orange::before { background: linear-gradient(90deg, #f97316, #fb923c); }
+#loginScreen { position: relative; width: 100%; min-height: 100vh; min-height: 100dvh; overflow-x: hidden; overflow-y: auto; }
+.login-shell { width: min(100%, 26rem); min-width: 0; }
+#loginScreen input, #loginScreen button { min-height: 44px; }
+@keyframes loginShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.login-error-shake { animation: loginShake .25s ease-in-out 2; }
+.id-card { background: linear-gradient(135deg,#0f2744 0%,#1a4975 60%,#2980b9 100%); }
+/* ---------- Mobile hardening ---------- */
+/* Never allow sideways scroll of the whole page */
+html, body { max-width: 100%; overflow-x: hidden; }
+/* Long words/emails/refs must wrap rather than widen the layout.
+   Tables are excluded — they scroll sideways instead of breaking mid-word. */
+#mainContent, #loginScreen { overflow-wrap: anywhere; }
+#mainContent table, #mainContent table * { overflow-wrap: normal; word-break: normal; }
+#mainContent table th { white-space: nowrap; }
+#mainContent .overflow-x-auto { -webkit-overflow-scrolling: touch; }
+/* Respect notches / rounded corners */
+#sidebar { padding-top: env(safe-area-inset-top); }
+header { padding-top: max(0.75rem, env(safe-area-inset-top)); }
+#mainContent { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+
+@media (max-width: 640px) {
+  /* iOS zooms the page in whenever a focused input is under 16px. */
+  input, select, textarea { font-size: 16px !important; }
+  /* Comfortable tap targets everywhere, not just on the login screen */
+  button, select, input, a.sidebar-link { min-height: 44px; }
+  /* Login panel sits at the top so the keyboard can't push it off-screen */
+  #loginScreen { align-items: flex-start; padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom)); }
+  .login-shell { margin: auto 0; }
+  /* Side-by-side form fields and KPI trios stack instead of squashing */
+  #mainContent .grid.grid-cols-2 { grid-template-columns: minmax(0, 1fr); }
+  #mainContent .grid.grid-cols-3 { grid-template-columns: minmax(0, 1fr); }
+  /* Stop KPI numbers overflowing their card on narrow screens */
+  .kpi-card .text-3xl { font-size: 1.5rem; }
+  /* Tables keep a readable width and scroll sideways inside their card
+     rather than compressing columns into single letters. */
+  #mainContent .overflow-x-auto > table { min-width: 34rem; }
+  /* Modals use the full width available */
+  #appModal > div { max-width: 100%; }
+}
+</style>
+</head>
+<body class="bg-gray-50">
+
+<!-- ============ LOGIN SCREEN ============ -->
+<div id="loginScreen" class="min-h-screen flex items-center justify-center px-4 py-6 sm:p-6" style="background:linear-gradient(135deg,#0a1929 0%,#0f2744 50%,#1a4975 100%)">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%2338bdf8' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 40 L20 20 Q30 16 40 20 L40 40 M20 20 Q30 24 40 20 M20 26 Q30 30 40 26 M20 32 Q30 36 40 32'/%3E%3Cpath d='M80 25 L65 32 L80 39 L95 32 Z M80 39 L80 46 M70 34 L70 42 Q80 48 90 42 L90 34'/%3E%3Cpath d='M140 18 L148 18 L150 22 L148 26 L140 26 Z M140 20 L134 20 L132 22 L134 24 L140 24 M150 22 L154 22'/%3E%3Cpath d='M25 80 Q25 68 35 65 Q45 68 45 80 Q45 85 40 88 L40 94 L30 94 L30 88 Q25 85 25 80Z M32 94 L32 97 L38 97 L38 94'/%3E%3Cpath d='M70 70 L100 70 L100 95 L70 95Z M73 76 L97 76 M73 80 L97 80 M73 84 L90 84'/%3E%3Ccircle cx='145' cy='80' r='2.5'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(60 145 80)'/%3E%3Cellipse cx='145' cy='80' rx='14' ry='5' transform='rotate(-60 145 80)'/%3E%3Cpath d='M18 120 L52 120 L52 142 L18 142Z M14 142 L56 142 L54 146 L16 146Z'/%3E%3Ccircle cx='85' cy='135' r='5'/%3E%3Ccircle cx='85' cy='135' r='10' stroke-dasharray='4 3.5'/%3E%3Cpath d='M20 160 L50 160 L50 165 L20 165Z M22 155 L52 155 L52 160 L22 160Z M18 165 L48 165 L48 170 L18 170Z'/%3E%3Ccircle cx='145' cy='160' r='10'/%3E%3Cellipse cx='145' cy='160' rx='5' ry='10'/%3E%3Cpath d='M135 160 L155 160 M136 155 L154 155 M136 165 L154 165'/%3E%3C/g%3E%3C/svg%3E&quot;);background-size:180px 180px"></div>
+<div class="login-shell relative w-full max-w-md">
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 mb-3 sm:mb-4" style="filter:drop-shadow(0 0 24px rgba(56,189,248,0.35))">
+<img data-logo alt="ATCE Logo" class="w-full h-full object-contain">
+</div>
+<h1 class="text-xl sm:text-2xl font-bold text-white">ATCE Student Portal</h1>
+<p class="text-sky-300/70 text-sm mt-1">Sign in with the details your registrar gave you</p><span class="df-tag df-free mt-2">Data free edition</span><p class="text-sky-300/50 text-[11px] mt-2">Sign-in uses a few KB. After that the portal opens from your saved copy and costs no data.</p>
+</div>
+<div class="bg-white rounded-2xl p-6 sm:p-7 shadow-2xl">
+<h2 class="text-base font-bold text-gray-800 mb-4">Student Sign In</h2>
+<div id="loginError" class="hidden mb-4 px-3 py-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs font-semibold"></div>
+<label class="block mb-3"><span class="block text-xs font-semibold text-gray-600 mb-1">Email Address</span><input type="email" id="loginEmail" autocomplete="username" class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-lg outline-none focus:border-blue-400" placeholder="you@example.com"></label>
+<label class="block mb-5"><span class="block text-xs font-semibold text-gray-600 mb-1">Password</span><input type="password" id="loginPassword" autocomplete="current-password" class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-lg outline-none focus:border-blue-400"></label>
+<button id="loginBtn" onclick="doStudentLogin()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-sky-500 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all">Sign In</button>
+<p class="text-[11px] text-gray-400 text-center mt-4">Don't have portal access yet? Ask your programme office to activate your account from the ATCE Management Dashboard.</p>
+</div>
+<div class="text-center mt-4 sm:mt-6 pb-1">
+<p class="text-[10px] text-sky-300/40">ATCE Student Portal v1.0 &middot; 2026 Academic Year</p>
+<p id="fbStatus" class="text-[10px] mt-1 text-sky-300/30">Connecting...</p>
+<button type="button" onclick="runDiagnostic()" class="text-[10px] mt-2 text-sky-300/50 underline hover:text-sky-200">Run connection diagnostic</button>
+<div id="diagnosticResult" class="mt-2"></div>
+</div>
+</div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="app" class="flex min-h-screen hidden">
+<div id="mobileOverlay" class="mobile-overlay" onclick="toggleSidebar()"></div>
+<aside id="sidebar" class="no-print fixed lg:sticky top-0 left-0 z-40 h-screen w-64 text-white flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-200">
+<div class="px-5 py-5 border-b border-white/10"><div class="flex items-center gap-3"><div class="w-10 h-10 flex items-center justify-center flex-shrink-0"><img data-logo alt="ATCE Logo" class="w-full h-full object-contain"></div><div><div class="font-bold text-sm tracking-wide text-white">ATCE Portal</div><div class="text-[10px] text-sky-300/80 tracking-wider uppercase font-medium">Student Access</div></div></div></div>
+<nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+<a href="#" onclick="nav('dashboard');return false" data-page="dashboard" class="sidebar-link active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/></svg>Dashboard</a>
+<a href="#" onclick="nav('profile');return false" data-page="profile" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>My Profile</a>
+<a href="#" onclick="nav('programme');return false" data-page="programme" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>My Programme</a>
+<a href="#" onclick="nav('attendance');return false" data-page="attendance" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>Attendance</a>
+<a href="#" onclick="nav('results');return false" data-page="results" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25A2.25 2.25 0 015.25 3h13.5A2.25 2.25 0 0121 5.25z"/></svg>Results</a>
+<a href="#" onclick="nav('fees');return false" data-page="fees" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5v12M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/></svg>Fees & Payments</a>
+<a href="#" onclick="nav('documents');return false" data-page="documents" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>Documents</a>
+<a href="#" onclick="nav('timetable');return false" data-page="timetable" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>Timetable</a>
+<a href="#" onclick="nav('announcements');return false" data-page="announcements" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 001.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 010 3.46"/></svg>Announcements</a>
+<a href="#" onclick="nav('notifications');return false" data-page="notifications" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>Notifications</a>
+<a href="#" onclick="nav('support');return false" data-page="support" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"/></svg>Support / Helpdesk</a>
+<a href="#" onclick="nav('requests');return false" data-page="requests" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg>Student Requests</a>
+<a href="#" onclick="nav('idcard');return false" data-page="idcard" class="sidebar-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75m-17.25 0h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125V6.375c0-.621.504-1.125 1.125-1.125h17.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125m-17.25 0h.375M12 10.5v.008"/></svg>Digital Student ID</a>
+<div class="pt-2 mt-2 border-t border-white/10"><button onclick="openLMS()" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-500 hover:shadow-lg transition-all"><svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Open LMS</button></div>
+</nav>
+<div class="px-5 py-4 border-t border-white/10"><div class="text-[10px] text-blue-200/50">ATCE Student Portal v1.0 &middot; 2026 &middot; Data free edition</div><div id="dfUsage" class="text-[10px] text-blue-200/50 mt-1"></div></div>
+</aside>
+
+<div class="flex-1 flex flex-col min-w-0">
+<header class="no-print sticky top-0 z-20 border-b border-gray-200 px-4 lg:px-6 py-3"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><button onclick="toggleSidebar()" class="lg:hidden p-2 rounded-lg hover:bg-gray-100"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><div><h1 class="text-lg font-bold text-gray-900" id="pageTitle">Dashboard</h1><p class="text-xs text-gray-500 flex items-center gap-2 flex-wrap">ATCE Student Portal <span id="dfPageTag"></span></p></div></div><div class="flex items-center gap-2 md:gap-4"><button id="dfSync" onclick="dfSyncNow()" class="no-print df-pill" title="Tap to sync. Syncing uses a little data."><span id="dfDot"></span><span id="dfSyncTxt">Saved copy</span><span class="df-tag df-data">Sync</span></button><button onclick="nav('notifications')" class="relative p-2 rounded-lg hover:bg-gray-100" title="Notifications"><svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg><span id="notifBadge" class="hidden absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span></button><div class="flex items-center gap-2 pl-2 md:pl-4 border-l border-gray-200 cursor-pointer group" onclick="doStudentLogout()" title="Sign Out"><div class="w-8 h-8 rounded-full bg-[#2980b9] flex items-center justify-center text-white text-xs font-bold" id="stuInitials">ST</div><div class="hidden md:block"><div class="text-xs font-semibold text-gray-700" id="stuName">Student</div><div class="text-[10px] text-gray-400" id="stuNumber">&nbsp;</div></div><svg class="w-4 h-4 text-gray-300 hidden md:block group-hover:text-red-500 transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"/></svg></div></div></div></header>
+<main id="mainContent" class="flex-1 p-4 lg:p-6 overflow-y-auto"></main>
+</div>
+</div>
+
+<script>
+(function(){var L="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFcAAAB9CAMAAADgIQ8OAAAAkFBMVEXapB742lyljyRnYizl4t9bYVghLDX64JehmVgrSGUHn+hfbo+k4PEZM1jgtlMBcNIMYZuZoLCQdyD60Sluj6matMk4RTYAPIQcyvoUkrBqqMtY1/tLOiKDfEjtvox+gy98gEL+/v4AGEkCJFP8/PsANnMARo4ACjcAK2UFFTkADEb5xjDwuC7+521UVjEqOE39UvwJAAAAMHRSTlP///////////////////////////////////////////8A//////////////////9T9NZ/AAAMt0lEQVR42u2abWPaOBLHZckSNn4I2EDTNL27SlAh28Hf/9vdf0Y2kJTQdje7dy9WfRFwzU/j0TxpZPHtrxniH+4/3D/GTf8a7qJP/gpu0ivZLz6au0jk2FklFh/KTSFssNZ2O5EsPo676EnY4EG2qk3Sj+EuEnGy1vkx0x1ENrL9CO4iGZQFL+iX5CUzkLnT7SL9c9wUsv6nAtWbLHnBSHSwzmoYRvonuIteKEfP7rIkeUm+ZgBnOan5JPufLKB4XwG92JEGfNCgvmRaa+ChjJHWbyfbNrkjtbj5+NCqkMrZSIUCamC7UUsiJwzunJYCUr/DfsMFMYGgUkWoN1+hgCTJvmoHxQYlmZxpNrrO7BSxkxv0v4dbCwlk7kivZFGs0CRr1MgXoBWQa8wkGhPoUmfdTuGaFOkdbip2HQYz7cjUpM4ynYeIjWrNcL3vYSu76RL9Qi7ucBMZhQrmlIkEC15nstE6iupndEXi9TSgr50JmNTZXZ++y10IgztO+NXQt/wzaMXAh/FvzPNc6xxfnDUnFdEDBt004gbZv8dNxA4ymZ7vFwzNHSsArOhviwqfSfu5/jehMXBvz48p05vclLDBB9EPkoZSJ2MntUJgxr4sNM1hHa/XKS4YyL2iCPIq6otzhJWQDdEKWCB3BlBau0mnevGyoAEuYbV2tFrGKAyJhyOwEldhQ7B/QZW7juP2AKyNcvqAhWeQ9XoRR+ZJDyOsXJt5Ib2CzNJx2GjnuEHcQaiROc0wuy89fFaT8eJbF0IWxX1ZGMob2eKFQ9AMbnoxUJDuOqMmS2auYQ6mFbJR081hR46GMFPprIYbLuaBSAEs/V92tmrVD6JV3gc8acyBgrzBwWDlgP+TzSnM94Y6YTCxKOzwyNYsNnNf9JmL8AYdm/xzbjs5cxcCjJaosNbLrTZ7IT0gQI7OVXmBAQM+HJ0m5ssc18g+kPvMs/n8+PjooO2XmSvtSLFGzo45uScyT1JD/mKd7i8j3RY2z0jmJFi2Zhtcvvq8fHxcPq48bOWKCxHIXCNv+oO1yrTN18Rab4oVjWKzLdN9WjhHD6M9cWHcOURdYjzmYOTJxH1RnU5qNWN1TmS/w4P6ApJui8PxePz06dN3DPpDF9eWclNWVUcmQ+bPBDays1Wyn7gn4srI7VTbZ4iKeIIsQLRNfjweJug8VkQu6BYy7wj+/PiwXK6aGqrhAoPl9VCljKZoYMIJUiT9ZL0v3PFweIOFOr5/AjnNbfSb49H61ePyYbV0IsE89cRNjM8mbggUR+oBCxaqdO/sgccraQkcyYXXSZsdD0eS9uGhWpoEXDtx97CXLGEPtwG+DoH7JPPFfq+Ph1vcOD5936ZPANca2C/A5vmqScg9s5nrmOu5+qLwBGmBTUd7vAf+ftiUW6dn7PeQ01K+4bbiRPKOogeYsaW7YN8Bf9qk5ZGX7GG5gmJ9lixG22WLM1f2zHW2qhFNk1CkjP0puNjAwB4fVg+Eta+5KXGHKC/SBXLQc1WWFWMv3MMt7neSdgklrAJ73h2uV23jyzKn+34q8NG6iJ0cj7jhlR7OXDcMflNGc38t8I9gN0n73etq4r68w/WyVVW5DuxFb8Bv3W6WNjc6+h1zKepP3Iq4bL/WtKLbRi1M3FfkGf4pYpeMDeTRdHsHO6uuuOPExYyyfc7LzSTubTChD6SEKmL96gmGoKmSj1y5mOJDzlx/onJAhG05Wufukw8HF6VdQtqnLxTqs5rjhfsbuBp5D1wqXwas2kUNZ/AdrLNFubFUzeoOGdFeuNCN6vvGsrhmc161OxJPyl3mHoH0WJaWq2JLYdDGhEx5CCoAl9K8gE9sX4l7Bl+TjzPWUny2RVqMnEfB9sGIdM5vCHe9NMQlNXh3G0zkSD8eKOlM2OOxSrekCD1ySVEN6SUf9730Bgo2RRlLMk5aMXVFl57wVJ4djtUhZp9pyjIlRficdIy8uZ/rB+cQH0MXpAhPCGScYx0KXkuFA1W+NMhV7aEoNoW1R1yfBkm82efkcrCKk7enOR+nrUGg7CuUKsKW2xhCbI78jg+X0iHF1YK/pvpyPSXual+MWLavSbJD4Jq531BZYZcHzxaNm6zMeqobCvuKa9fz59yeuaSKQ7px4GYJJPTnOupbu/NcRRvRVGURuYF+WFqn8eA0A/4ydq3zgqoHyvQ8WMVIAzBdVMNh3sHEug+BrEON1apVGkOk1UBs91yJOpIK7j8Slqtqx1xa04rtxGHh2CW4tjzrV0ylA2Lkagq9JNsIwTxV0eBh0ShDp2wYNuo9d4cKJkfcbWprCpH0y11/LW9HVibAZW+zKB7SMO5TsrcRn8ENay6fpkFq4nqKBLbrFNUcFdqvuZUNDTK8FM+Ra0m2ovMoIWycY3qEdTc5yrye22tu3DWomfsN27bAeyahctaD9VtaKpjamvRKXMvc2ceP53Vz7CtbdgwKEdd21qP2Z24LbmEnlcZR8XoR12Mp92P0QRfXDUn7wFxEnnqS94qbKJSRxO1hZxsqMLjoTdNowhXjo+mlVKOviy5yJ51glpJ3Da3qruzsW9LYjoP6II8lPTkR4FOOLCDaF7YCUeD9GuYX/SKlsSZ2tV+HHpvxlpLved9CgceaqGD4cbAESNlowNF+jPKSUU+rleYXP47XC9O2bU+bOHPZZ7EBB3iLoLgDjRbbtaYVog+Fd+v1Oj6zdwXJiG2AW2+32zUNy2EDcUeceIt+6i/72D6W6qh1OE7OwZHc2XPEDHNZHrsFHC6nQZe3pZUJbaXwuUku3CS2PrAHuBnXz8OGHDV1TnbG4Xi6PEJ5wzBt/ORlH/ttwdvN0+iEoDxk39Au0tMWbVm9mS3oEuqVXumLeiM3hU5Di9WUMWG8EXKzCVEbmy/L5ee30zpUBg5P2rXSOtjrdZ/gRH6iPFKcOrIFX/3KPD1+2bD9Avv4I9bm5daLXtoMycI39TW3sbG7i+Ff1yXBbL/g4b/k3myWt6SFf5c56g8hY/mcXnOF4Ws0nl+tnDXlF2wlQc4Ju7qBJXGptSHIytTwql9Sqw4IaukI6Z8ulYmtnkAN1TKOqX5+rd11WZmefcrOznbmLuJkgto1MLWnSSxfsYzBR/ANaeHc5cawuMTdiTf9Hep22DitQL1eRE0YljFQLnkHa0eEMkWhm/Urk7+JWzfkoDH2NH6q2H2EYXfrvFndxLptqQP/SuxIDenbPpfYwY9PrVQImM+WN0S0XBMWyxPsDSwWDdptpTlxX0jWP/Tl4r4b5kaR2OTlEy/ayk9YRIQfLYw85clAC1MUuhL30u8TUxzjVGfyFbC0L6Po9V4UwkI8eTWIqSNypd0r7mKelUJ84wm7DBwh3+Fas0YxR5X+JJASN/ueg+rO/btnwj4czpHslrC6hGOqfpBzJBb/usldCIoL1hnCHoCtqA1q34vERQlrVLwlmXqjwzt92lpS4xR2Zhh7QHTKK3/LDDxCblrm1D+k4WLUSt/rK7OmkKV8RV2VYAP29evRvwkKmEiX+7RAVI3YGMmCuNOvzmkJwgHJxrHhjigk0iK/ZDNMUmlqU8Fs+iFiBUVZpIT3++u1oHrpgI0/1aWI/cpXsS+3LrTWudbc+0sLrO0wUwUVvbg3vXPOwI/kIC23HMXQCuQs/UMf0TSCqNI5JaO0Rtw7D4A7k7GhQIQOQiP40CPTJuDhucrT+RGFhmj7c6Rxu5gm6vvnLels5QE21IimEdytzb6elBlzddJStK240mu0sR+wP5w7LRAx3ex2RA5OZ7ETTANQqULMWBxbuZknh5+fZy3EuQesJpE8fpnUPIaRzgIocQt5mm3kh0Ocm+dkdQST0NTCj0aviUsFZ/yOvciJzhpiuLmBvXX+VvOxi1OquzSvDctLPutii9h7b2Jr9yb25rleBBslXVdNEgcxkLxTSDydYBWyuYO9fQ5ZU/aw/kRHJJqPyFBq0vGOjC1i1cAs2B2QitPfON/8V2x7CT580VQpuhMNw1OoRvAJi4M7DL93broQrICmp4ZHdjlQAErxOQcVbCi86t89j12wN0EVbSKU1qGLHQl7Yml5UmTC+vfPedMBcZ4UCG8gkZlE50wQ9pllb+69XXDnXDoRnDapPV8rlY2d00pRiRGiBYv0j553N3Rq3o1w457WLy4Yu6+/p4Ofns8PImen0mRjjYodK6oxQvOzNyzuv09AO9P40P0Ux3nFULr8mXP/+P5HPL87cTJTdOCLlPPzlzb+R1x6D6YJHVU3qLr5YMyf6l94E+QX3gPpBRuvNdGE5S+96vKL763suukUXYk6/SgunwJDzfQCT/2B79nEU2sJDQ8f+17Q9LrNr1P/H97n+ud9uX+4f3z8F/uPoaRRNpBrAAAAAElFTkSuQmCC";document.querySelectorAll("img[data-logo]").forEach(function(i){i.src=L});document.getElementById("dfIcon").href=L})();
+// ======================================================================
+// DATA-FREE CORE: tiny REST client (replaces the ~400 KB Firebase SDK),
+// local saved copy, offline request queue, data-use counter.
+// ======================================================================
+const CFG={apiKey:"AIzaSyDliIxZ7uacoBzTtJs_SS1rd0Or_pGLFNo",authDomain:"atce-dashboard.firebaseapp.com",projectId:"atce-dashboard",storageBucket:"atce-dashboard.firebasestorage.app",messagingSenderId:"665264440075",appId:"1:665264440075:web:dcd405125babd40d4b180e"};
+const COL={PROG:'programmes',SITES:'teachingSites',REG:'attendanceRegisters',STUDENTS:'students',ATTEND:'classAttendance',REQUESTS:'studentRequests',ANNOUNCEMENTS:'announcements',RESULTS:'studentResults',FEELEDGER:'feeLedger',DOCUMENTS:'studentDocuments'};
+const FS='https://firestore.googleapis.com/v1/projects/'+CFG.projectId+'/databases/(default)/documents';
+const DOCNAME=(col,id)=>'projects/'+CFG.projectId+'/databases/(default)/documents/'+col+'/'+id;
+// TODO (staff): set your real LMS URL here.
+const LMS_URL='https://lms.atce.co.za';
+
+const SESS='atce_df_session',CACHE='atce_df_cache',QK='atce_df_queue',BYTES='atce_df_bytes';
+const LS={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+
+let idToken=null,idExp=0,refreshTok=null,authUid=null,dfSyncedAt=0,dfBusy=false;
+function isReady(){return navigator.onLine!==false}
+function uid(){return 'id_'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function esc(s){if(s===null||s===undefined)return'';return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function fmtCurrency(v){if(v===null||v===undefined||isNaN(v))return'R0.00';return'R'+Number(v).toLocaleString('en-ZA',{minimumFractionDigits:2,maximumFractionDigits:2})}
+
+// ---- data-use counter (so students can SEE what the portal costs) ----
+function dfCount(n){const b=LS.get(BYTES)||{total:0};b.total+=n;LS.set(BYTES,b);dfUsage()}
+function dfFmt(n){return n<1024?n+' B':(n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(2)+' MB')}
+function dfUsage(){const el=document.getElementById('dfUsage');if(!el)return;const b=LS.get(BYTES)||{total:0};el.textContent='Data used on this device: '+dfFmt(b.total)}
+
+// ---- HTTP helpers ----
+async function rawFetch(url,opts){
+let r;try{r=await fetch(url,opts)}catch(e){const er=new Error('Network error');er.code='network';throw er}
+const text=await r.text();dfCount(text.length+((opts&&opts.body)?String(opts.body).length:0));
+let j=null;try{j=JSON.parse(text)}catch(e){}
+return{r,j};
+}
+function apiErr(r,j){const m=(j&&j.error&&(j.error.message||j.error))||('HTTP '+r.status);const er=new Error(typeof m==='string'?m:JSON.stringify(m));er.http=r.status;er.code=(j&&j.error&&j.error.status)||'';return er}
+function setTokens(id,ref,exp,u){idToken=id;refreshTok=ref;idExp=Date.now()+(Number(exp)||3600)*1000;if(u)authUid=u;const s=LS.get(SESS);if(s){s.refreshToken=ref;LS.set(SESS,s)}}
+async function fbSignIn(email,pass){
+const {r,j}=await rawFetch('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key='+CFG.apiKey,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass,returnSecureToken:true})});
+if(!r.ok)throw apiErr(r,j);
+setTokens(j.idToken,j.refreshToken,j.expiresIn,j.localId);
+}
+async function fbRefresh(){
+const {r,j}=await rawFetch('https://securetoken.googleapis.com/v1/token?key='+CFG.apiKey,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=refresh_token&refresh_token='+encodeURIComponent(refreshTok||'')});
+if(!r.ok){const er=apiErr(r,j);if(r.status>=400&&r.status<500)er.authExpired=true;throw er}
+setTokens(j.id_token,j.refresh_token,j.expires_in,j.user_id);
+}
+async function tok(){if(!refreshTok){const er=new Error('Not signed in');er.authExpired=true;throw er}if(!idToken||Date.now()>idExp-60000)await fbRefresh();return idToken}
+async function api(method,path,body){
+const t=await tok();
+const h={'Authorization':'Bearer '+t};if(body)h['Content-Type']='application/json';
+const {r,j}=await rawFetch(FS+path,{method,headers:h,body:body?JSON.stringify(body):undefined});
+if(r.status===404&&method==='GET')return null;
+if(!r.ok){const er=apiErr(r,j);if(r.status===401)er.authExpired=true;throw er}
+return j;
+}
+
+// ---- Firestore value codec ----
+function enc(v){
+if(v===null||v===undefined)return{nullValue:null};
+if(typeof v==='boolean')return{booleanValue:v};
+if(typeof v==='number')return Number.isInteger(v)?{integerValue:String(v)}:{doubleValue:v};
+if(typeof v==='string')return{stringValue:v};
+if(Array.isArray(v))return{arrayValue:{values:v.map(enc)}};
+if(typeof v==='object'){const f={};for(const k in v)if(v[k]!==undefined)f[k]=enc(v[k]);return{mapValue:{fields:f}}}
+return{stringValue:String(v)};
+}
+function dec(v){
+if('stringValue' in v)return v.stringValue;
+if('integerValue' in v)return Number(v.integerValue);
+if('doubleValue' in v)return v.doubleValue;
+if('booleanValue' in v)return v.booleanValue;
+if('nullValue' in v)return null;
+if('timestampValue' in v)return v.timestampValue;
+if('arrayValue' in v)return(v.arrayValue.values||[]).map(dec);
+if('mapValue' in v){const o={},f=v.mapValue.fields||{};for(const k in f)o[k]=dec(f[k]);return o}
+if('geoPointValue' in v)return v.geoPointValue;
+if('referenceValue' in v)return v.referenceValue;
+return null;
+}
+function decDoc(d){const o={id:d.name.split('/').pop()},f=d.fields||{};for(const k in f)o[k]=dec(f[k]);return o}
+function encFields(o){const f={};for(const k in o)if(o[k]!==undefined)f[k]=enc(o[k]);return f}
+
+// ---- Firestore operations (all scoped; nothing downloads other students' data) ----
+const fEq=(f,v)=>({fieldFilter:{field:{fieldPath:f},op:'EQUAL',value:enc(v)}});
+const fHas=(f,v)=>({fieldFilter:{field:{fieldPath:f},op:'ARRAY_CONTAINS',value:enc(v)}});
+async function fsQuery(col,where,limit){
+const sq={from:[{collectionId:col}]};if(where)sq.where=where;if(limit)sq.limit=limit;
+const res=await api('POST',':runQuery',{structuredQuery:sq});
+return(res||[]).filter(x=>x.document).map(x=>decDoc(x.document));
+}
+async function fsGet(col,id){const d=await api('GET','/'+col+'/'+encodeURIComponent(id));return d?decDoc(d):null}
+async function fsAdd(col,data){const d=await api('POST','/'+col,{fields:encFields(data)});return d.name.split('/').pop()}
+async function fsCheckinWrite(sid,base,mark){
+// one request: merge the header fields + append my mark atomically
+return api('POST',':commit',{writes:[{update:{name:DOCNAME(COL.ATTEND,sid),fields:encFields(base)},updateMask:{fieldPaths:Object.keys(base)},updateTransforms:[{fieldPath:'marks',appendMissingElements:{values:[enc(mark)]}}]}]});
+}
+async function fsSetMarks(sid,marks){
+return api('POST',':commit',{writes:[{update:{name:DOCNAME(COL.ATTEND,sid),fields:{marks:enc(marks)}},updateMask:{fieldPaths:['marks']},currentDocument:{exists:true}}]});
+}
+
+// ---- connection check (no sign-in needed; any HTTP answer = reachable) ----
+async function runDiagnostic(){
+const box=document.getElementById('diagnosticResult');
+box.innerHTML='<div class="text-[10px] text-sky-300/60">Testing connection...</div>';
+let ok=false,detail='';
+try{const r=await fetch(FS+'/_connection_test/ping');ok=true;detail='Google\'s servers are reachable from this network (they replied with HTTP '+r.status+', which is expected before sign-in). If sign-in still fails, check your email and password.';dfCount(400)}
+catch(e){detail='Google\'s servers could not be reached. Check that you have data/Wi-Fi, or that this network is not blocking firestore.googleapis.com.'}
+const color=ok?'text-emerald-300 bg-emerald-500/10 border-emerald-400/30':'text-red-300 bg-red-500/10 border-red-400/30';
+box.innerHTML='<div class="text-left px-3 py-2.5 rounded-lg border '+color+' text-[11px] leading-relaxed">'+esc(detail)+'</div>';
+}
+
+// ---- saved copy ----
+function dfSave(){dfSyncedAt=dfSyncedAt||Date.now();LS.set(CACHE,{student:currentStudent,data:dataCache,syncedAt:dfSyncedAt})}
+
+// ======================================================================
+// AUTH / SESSION
+// ======================================================================
+let currentStudent=null;
+let dataCache={programmes:[],sites:[],registers:[],classAttendance:[],requests:[],announcements:[],results:[],feeLedger:[],documents:[]};
+
+function showLoginError(msg){const e=document.getElementById('loginError');e.textContent=msg;e.classList.remove('hidden');e.classList.add('login-error-shake');setTimeout(()=>e.classList.remove('login-error-shake'),500)}
+function hideLoginError(){document.getElementById('loginError').classList.add('hidden')}
+function setLoginBusy(b){const btn=document.getElementById('loginBtn');btn.disabled=b;btn.textContent=b?'Signing in...':'Sign In'}
+
+async function doStudentLogin(){
+const email=(document.getElementById('loginEmail').value||'').trim().toLowerCase();
+const pass=document.getElementById('loginPassword').value||'';
+if(!email||!pass){showLoginError('Enter your email and password.');return}
+hideLoginError();
+if(!isReady()){showLoginError('You are offline. You only need data for the first sign-in; after that the portal opens from your saved copy.');return}
+setLoginBusy(true);
+try{
+await fbSignIn(email,pass);
+LS.set(SESS,{refreshToken:refreshTok,uid:authUid,email});
+const rows=await fsQuery(COL.STUDENTS,fEq('portalUid',authUid),1);
+if(!rows.length){
+dfWipe();
+showLoginError('This account is not linked to a student record. Please contact your programme office.');
+setLoginBusy(false);return;
+}
+currentStudent=rows[0];
+setLoginBusy(false);
+await startPortalSession(true);
+}catch(err){
+const m=String((err&&err.message)||'');
+let msg;
+if(err&&err.code==='network')msg='Network error. Check your connection.';
+else if(/INVALID_PASSWORD|INVALID_LOGIN_CREDENTIALS/.test(m))msg='Incorrect email or password.';
+else if(/EMAIL_NOT_FOUND/.test(m))msg='No account found for this email.';
+else if(/INVALID_EMAIL/.test(m))msg='Enter a valid email address.';
+else if(/TOO_MANY_ATTEMPTS/.test(m))msg='Too many attempts. Try again shortly.';
+else if(/USER_DISABLED/.test(m))msg='This account has been disabled. Contact your programme office.';
+else msg='Sign-in failed: '+(m||'unknown error');
+dfWipe(true);
+showLoginError(msg);
+setLoginBusy(false);
+}
+}
+function dfWipe(keepQueue){idToken=null;refreshTok=null;authUid=null;idExp=0;LS.del(SESS);LS.del(CACHE);dfSyncedAt=0;if(!keepQueue)LS.del(QK)}
+function doStudentLogout(forced){
+const q=getQ();
+if(!forced&&q.length&&!confirm('You have '+q.length+' unsent request(s). Signing out will delete them. Sign out anyway?'))return;
+dfWipe();
+currentStudent=null;
+dataCache={programmes:[],sites:[],registers:[],classAttendance:[],requests:[],announcements:[],results:[],feeLedger:[],documents:[]};
+document.getElementById('app').classList.add('hidden');
+document.getElementById('loginScreen').classList.remove('hidden');
+document.getElementById('loginPassword').value='';
+}
+async function startPortalSession(fresh){
+document.getElementById('loginScreen').classList.add('hidden');
+document.getElementById('app').classList.remove('hidden');
+const initials=(currentStudent.name||'ST').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+document.getElementById('stuInitials').textContent=initials;
+document.getElementById('stuName').textContent=currentStudent.name||'Student';
+document.getElementById('stuNumber').textContent=currentStudent.studentNumber||'';
+dfDecorateSidebar();dfUsage();
+if(fresh){dfPill('syncing');try{await loadAllData();dfSyncedAt=Date.now();dfSave()}catch(e){console.warn('first sync failed',e)}}
+else updateNotifBadge();
+dfPill();
+nav('dashboard');
+}
+
+// ---- data loading: ONLY this student's records, only when signing in or tapping Sync ----
+function getQ(){return LS.get(QK)||[]}
+async function flushQueue(){
+const q=getQ();if(!q.length)return;
+const left=[];
+for(const it of q){try{await fsAdd(COL.REQUESTS,it.data)}catch(e){if(e.authExpired)throw e;left.push(it)}}
+LS.set(QK,left);
+}
+async function safe(p){try{return await p}catch(e){if(e&&e.authExpired)throw e;console.warn('load failed:',e&&e.message);return null}}
+function qAttendance(prog){
+const f=[];if(prog.id)f.push(fEq('programmeId',prog.id));if(prog.programme)f.push(fEq('programme',prog.programme));
+if(!f.length)return Promise.resolve([]);
+return fsQuery(COL.ATTEND,f.length>1?{compositeFilter:{op:'OR',filters:f}}:f[0]);
+}
+async function loadAllData(){
+const s=currentStudent,name=s.name;
+await flushQueue();
+const [prog,reg,ann,res,fee,docs,req]=await Promise.all([
+s.programmeId?safe(fsGet(COL.PROG,s.programmeId)):Promise.resolve(undefined),
+safe(fsQuery(COL.REG,fHas('students',name))),
+safe(fsQuery(COL.ANNOUNCEMENTS)),
+safe(fsQuery(COL.RESULTS,fEq('studentId',s.id))),
+safe(fsQuery(COL.FEELEDGER,fEq('studentId',s.id))),
+safe(fsQuery(COL.DOCUMENTS)),
+safe(fsQuery(COL.REQUESTS,fEq('studentId',s.id)))
+]);
+let site=null,att=null;
+if(prog){[site,att]=await Promise.all([prog.venue?safe(fsQuery(COL.SITES,fEq('name',prog.venue),1)):Promise.resolve([]),safe(qAttendance(prog))])}
+if(prog!==null)dataCache.programmes=prog?[prog]:[];
+if(site)dataCache.sites=site;
+if(reg)dataCache.registers=reg.map(r=>({...r,students:[name]}));
+if(att)dataCache.classAttendance=att.map(r=>({...r,marks:(r.marks||[]).filter(m=>m.student===name)}));
+if(ann)dataCache.announcements=ann.filter(a=>!a.audience||a.audience==='students'||a.audience==='all').sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||'')).slice(0,60);
+if(res)dataCache.results=res;
+if(fee)dataCache.feeLedger=fee;
+if(docs)dataCache.documents=docs.filter(d=>!d.studentId||d.studentId===s.id);
+if(req){dataCache.requests=req;getQ().forEach(it=>dataCache.requests.push({id:uid(),...it.data,status:'Queued \u2014 sends on next sync'}))}
+updateNotifBadge();
+}
+function cacheMark(sid,base,mark){
+let r=dataCache.classAttendance.find(x=>x.id===sid);
+if(!r){r={id:sid,...base,marks:[]};dataCache.classAttendance.push(r)}
+r.marks=(r.marks||[]).filter(m=>m.student!==mark.student).concat([mark]);
+dfSave();
+}
+function myProgramme(){return currentStudent.programmeId?dataCache.programmes.find(p=>p.id===currentStudent.programmeId):null}
+function openLMS(){if(!confirm('The LMS is an external website and uses your mobile data (it is not part of the data-free portal). Open it?'))return;window.open(LMS_URL,'_blank')}
+
+// ======================================================================
+// DATA-FREE UI: tags, sync pill, offline handling
+// ======================================================================
+const DF_PAGE={dashboard:'free',profile:'free',programme:'free',attendance:'free',results:'free',fees:'free',documents:'free',timetable:'free',announcements:'free',notifications:'free',idcard:'free',support:'mixed',requests:'mixed'};
+function dfDecorateSidebar(){
+document.querySelectorAll('#sidebar .sidebar-link[data-page]').forEach(a=>{
+if(a.dataset.dft)return;a.dataset.dft=1;
+const free=DF_PAGE[a.dataset.page]==='free';
+a.insertAdjacentHTML('beforeend','<span class="df-tag '+(free?'df-free':'df-data')+' ml-auto">'+(free?'Data free':'Uses data')+'</span>');
+});
+document.querySelectorAll('#sidebar button[onclick^="openLMS"]').forEach(b=>{
+if(b.dataset.dft)return;b.dataset.dft=1;
+b.insertAdjacentHTML('beforeend','<span class="df-tag df-data ml-auto">Uses data</span>');
+});
+}
+function dfPageTag(page){
+const el=document.getElementById('dfPageTag');if(!el)return;
+const k=DF_PAGE[page]||'free';
+el.innerHTML=k==='free'?'<span class="df-tag df-free">Data free</span>':'<span class="df-tag df-free">Data free to read</span><span class="df-tag df-data">Sending uses data</span>';
+}
+function dfPill(state,msg){
+const dot=document.getElementById('dfDot'),txt=document.getElementById('dfSyncTxt'),btn=document.getElementById('dfSync');
+if(!dot)return;
+const q=getQ().length;
+let c='#22c55e',t;
+if(state==='syncing'){c='#38bdf8';t='Syncing\u2026'}
+else if(state==='error'){c='#ef4444';t=msg||'Sync failed'}
+else if(!isReady()){c='#94a3b8';t='Offline'}
+else{
+const age=dfSyncedAt?Date.now()-dfSyncedAt:Infinity;
+if(age>864e5)c='#f59e0b';
+const d=new Date(dfSyncedAt),same=d.toDateString()===new Date().toDateString();
+t=dfSyncedAt?('Saved '+(same?d.toLocaleTimeString('en-ZA',{hour:'2-digit',minute:'2-digit'}):d.toLocaleDateString('en-ZA',{day:'numeric',month:'short'}))):'Not synced';
+}
+if(q)t+=' \u00b7 '+q+' unsent';
+btn.title=(isReady()?'Online. ':'Offline. ')+'Showing your saved copy (no data used). Tap to sync \u2014 syncing uses a little data.';
+dot.style.background=c;txt.textContent=t;btn.disabled=(state==='syncing');
+}
+async function dfSyncNow(){
+if(dfBusy)return;
+if(!isReady()){dfPill();alert('You are offline. Everything you see is your saved copy and costs no data. Tap Sync when you are on Wi-Fi or have data.');return}
+dfBusy=true;dfPill('syncing');
+try{
+await loadAllData();
+dfSyncedAt=Date.now();dfSave();
+dfPill();nav(currentPage);
+}catch(e){
+if(e&&e.authExpired){dfBusy=false;doStudentLogout(true);showLoginError('Your session expired. Please sign in again.');return}
+dfPill('error',e&&e.code==='network'?'No connection':'Sync failed');
+}
+dfBusy=false;
+}
+window.addEventListener('online',()=>dfPill());
+window.addEventListener('offline',()=>dfPill());
+
+// "Uses data" micro-tags on the few actions that talk to the server
+(function(){
+const main=document.getElementById('mainContent');
+new MutationObserver(function(){
+main.querySelectorAll('#checkinBtn,#signoutBtn,button[onclick^="submitRequest"],a[target="_blank"]').forEach(el=>{
+if(el.dataset.dft)return;el.dataset.dft=1;
+if(el.tagName==='A')el.insertAdjacentHTML('beforeend','<span class="df-tag df-data ml-2">Uses data</span>');
+else el.insertAdjacentHTML('afterend','<span class="df-tag df-data ml-2">Uses data</span>');
+});
+}).observe(main,{childList:true,subtree:true});
+})();
+
+function drawQR(cv,text,px){
+if(typeof qrcode==='undefined'||!cv)return;
+if(qrcode.stringToBytesFuncs&&qrcode.stringToBytesFuncs['UTF-8'])qrcode.stringToBytes=qrcode.stringToBytesFuncs['UTF-8'];
+const q=qrcode(0,'M');q.addData(text);q.make();
+const n=q.getModuleCount(),m=1,sc=Math.max(1,Math.floor(px/(n+2*m))),size=(n+2*m)*sc;
+cv.width=cv.height=size;
+const g=cv.getContext('2d');g.fillStyle='#ffffff';g.fillRect(0,0,size,size);g.fillStyle='#0f2744';
+for(let r=0;r<n;r++)for(let c=0;c<n;c++)if(q.isDark(r,c))g.fillRect((c+m)*sc,(r+m)*sc,sc,sc);
+}
+
+// ======================================================================
+// NAVIGATION
+// ======================================================================
+let currentPage='dashboard';
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('-translate-x-full');document.getElementById('mobileOverlay').classList.toggle('active')}
+function nav(page){
+currentPage=page;
+document.querySelectorAll('.sidebar-link').forEach(el=>{el.classList.remove('active');if(el.dataset.page===page)el.classList.add('active')});
+const sb=document.getElementById('sidebar');
+if(!sb.classList.contains('-translate-x-full')&&window.innerWidth<1024)toggleSidebar();
+const titles={dashboard:'Dashboard',profile:'My Profile',programme:'My Programme',attendance:'Attendance',results:'Results',fees:'Fees & Payments',documents:'Documents',timetable:'Timetable',announcements:'Announcements',notifications:'Notifications',support:'Support / Helpdesk',requests:'Student Requests',idcard:'Digital Student ID'};
+document.getElementById('pageTitle').textContent=titles[page]||'Dashboard';
+dfPageTag(page);
+const main=document.getElementById('mainContent');
+const R={dashboard:renderDashboard,profile:renderProfile,programme:renderProgramme,attendance:renderAttendance,results:renderResults,fees:renderFees,documents:renderDocuments,timetable:renderTimetable,announcements:renderAnnouncements,notifications:renderNotifications,support:renderSupport,requests:renderRequests,idcard:renderIdCard};
+main.innerHTML='';
+if(R[page])R[page](main);
+}
+
+// ---- Attendance helpers (real data: class registers + historical registers) ----
+function myAttendanceSessions(){
+const name=currentStudent.name;
+const fromClass=dataCache.classAttendance.filter(r=>(r.marks||[]).some(m=>m.student===name)).map(r=>{
+const mark=(r.marks||[]).find(m=>m.student===name);
+return{date:r.date,programme:r.programme,status:mark?mark.status:'Unknown',source:'Class Register',checkedInAt:mark?mark.checkedInAt:null,checkedOutAt:mark?mark.checkedOutAt:null};
+});
+return fromClass.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+}
+function myHistoricalRegisters(){
+return dataCache.registers.filter(r=>(r.students||[]).includes(currentStudent.name));
+}
+function attendanceStats(){
+const sessions=myAttendanceSessions();
+const total=sessions.length;
+const present=sessions.filter(s=>s.status==='Present').length;
+const pct=total?Math.round((present/total)*100):null;
+return{total,present,pct,sessions};
+}
+
+// ---- Self-service GPS check-in ----
+// NOTE: this is a soft deterrent, not tamper-proof security. A technically
+// determined student could spoof their device's reported location (e.g. via
+// browser dev tools or a fake-GPS app). There is no server-side (Cloud
+// Function) validation in this architecture to block that — proximity is
+// checked client-side only. Treat it as attendance evidence to review, not
+// as cryptographic proof.
+const CHECKIN_RADIUS_METERS=200;
+function todayLocalStr(){const d=new Date();const off=d.getTimezoneOffset();const local=new Date(d.getTime()-off*60000);return local.toISOString().slice(0,10)}
+function haversineMeters(lat1,lon1,lat2,lon2){
+const R=6371000;
+const toRad=v=>v*Math.PI/180;
+const dLat=toRad(lat2-lat1),dLon=toRad(lon2-lon1);
+const a=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function todaysCheckinSessionId(prog){return 'self_'+todayLocalStr()+'_'+(prog?prog.id:'noprog')}
+function myTodayCheckin(prog){
+const sid=todaysCheckinSessionId(prog);
+const rec=dataCache.classAttendance.find(r=>r.id===sid);
+if(!rec)return null;
+return (rec.marks||[]).find(m=>m.student===currentStudent.name)||null;
+}
+async function markMyAttendance(){
+const prog=myProgramme();
+if(!prog){alert('You are not yet linked to a programme, so attendance cannot be captured. Contact your programme office.');return}
+const btn=document.getElementById('checkinBtn');
+const statusEl=document.getElementById('checkinStatus');
+if(!navigator.geolocation){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Your browser does not support location services, so attendance cannot be verified here.</div>';
+return;
+}
+if(btn){btn.disabled=true;btn.textContent='Getting your location...'}
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-blue-50 border border-blue-100 rounded-lg text-xs text-blue-700">Requesting location access \u2014 please allow the browser permission prompt if you see one.</div>';
+navigator.geolocation.getCurrentPosition(async function(pos){
+const lat=pos.coords.latitude,lng=pos.coords.longitude;
+await completeCheckin(prog,lat,lng);
+},function(err){
+if(btn){btn.disabled=false;btn.textContent='Mark My Attendance'}
+let msg='Could not get your location.';
+if(err.code===1)msg='Location access was denied. Please enable Location for this site in your browser/phone settings, then try again.';
+else if(err.code===2)msg='Your location could not be determined. Make sure your device\'s Location Services are turned on.';
+else if(err.code===3)msg='Getting your location took too long. Check your connection and try again.';
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">'+msg+'</div>';
+},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+async function completeCheckin(prog,lat,lng){
+const btn=document.getElementById('checkinBtn');
+const statusEl=document.getElementById('checkinStatus');
+if(!isReady()){if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Cannot reach the ATCE server right now. Please try again shortly.</div>';if(btn){btn.disabled=false;btn.textContent='Mark My Attendance'}return}
+const site=dataCache.sites.find(s=>s.name===prog.venue);
+let distanceMeters=null,withinRadius=null;
+if(site&&site.lat&&site.lng){
+distanceMeters=Math.round(haversineMeters(lat,lng,parseFloat(site.lat),parseFloat(site.lng)));
+withinRadius=distanceMeters<=CHECKIN_RADIUS_METERS;
+if(!withinRadius){
+if(btn){btn.disabled=false;btn.textContent='Mark My Attendance'}
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">You appear to be about '+distanceMeters+'m from '+esc(prog.venue)+'. Move closer to the venue and try again, or <button onclick="nav(\'support\')" class="underline font-bold">contact support</button> if you believe this is wrong.</div>';
+return;
+}
+}
+const sid=todaysCheckinSessionId(prog);
+const nowIso=new Date().toISOString();
+const mark={student:currentStudent.name,status:'Present',method:'self',checkedInAt:nowIso,lat,lng,distanceMeters,withinRadius};
+try{
+const snapDoc=await fsGet(COL.ATTEND,sid);const snap={exists:!!snapDoc,data:()=>snapDoc||{}};
+if(snap.exists&&(snap.data().marks||[]).some(m=>m.student===currentStudent.name)){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700">You already marked your attendance today.</div>';
+renderAttendance(document.getElementById('mainContent'));
+return;
+}
+await fsCheckinWrite(sid,{date:todayLocalStr(),programme:prog.programme,programmeId:prog.id,selfService:true,updatedAt:nowIso},mark);
+cacheMark(sid,{date:todayLocalStr(),programme:prog.programme,programmeId:prog.id,selfService:true},mark);
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700 font-semibold">Attendance marked at '+new Date(nowIso).toLocaleTimeString()+(distanceMeters!==null?' \u2014 '+distanceMeters+'m from '+esc(prog.venue):' (location captured; venue coordinates not yet set by staff)')+'</div>';
+renderAttendance(document.getElementById('mainContent'));
+}catch(e){
+if(e&&e.authExpired){doStudentLogout(true);showLoginError('Your session expired. Please sign in again.');return}
+if(btn){btn.disabled=false;btn.textContent='Mark My Attendance'}
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Could not save your attendance: '+esc(e.message)+'</div>';
+}
+}
+
+// ---- Self-service GPS sign-out (same logic and safeguards as check-in) ----
+async function markMySignOut(){
+const prog=myProgramme();
+if(!prog){alert('You are not yet linked to a programme.');return}
+const btn=document.getElementById('signoutBtn');
+const statusEl=document.getElementById('checkinStatus');
+if(!navigator.geolocation){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Your browser does not support location services, so sign-out cannot be verified here.</div>';
+return;
+}
+if(btn){btn.disabled=true;btn.textContent='Getting your location...'}
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-blue-50 border border-blue-100 rounded-lg text-xs text-blue-700">Requesting location access \u2014 please allow the browser permission prompt if you see one.</div>';
+navigator.geolocation.getCurrentPosition(async function(pos){
+await completeSignOut(prog,pos.coords.latitude,pos.coords.longitude);
+},function(err){
+if(btn){btn.disabled=false;btn.textContent='Sign Out'}
+let msg='Could not get your location.';
+if(err.code===1)msg='Location access was denied. Please enable Location for this site in your browser/phone settings, then try again.';
+else if(err.code===2)msg='Your location could not be determined. Make sure your device\'s Location Services are turned on.';
+else if(err.code===3)msg='Getting your location took too long. Check your connection and try again.';
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">'+msg+'</div>';
+},{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+async function completeSignOut(prog,lat,lng){
+const btn=document.getElementById('signoutBtn');
+const statusEl=document.getElementById('checkinStatus');
+if(!isReady()){if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Cannot reach the ATCE server right now. Please try again shortly.</div>';if(btn){btn.disabled=false;btn.textContent='Sign Out'}return}
+const site=dataCache.sites.find(s=>s.name===prog.venue);
+let distanceMeters=null,withinRadius=null;
+if(site&&site.lat&&site.lng){
+distanceMeters=Math.round(haversineMeters(lat,lng,parseFloat(site.lat),parseFloat(site.lng)));
+withinRadius=distanceMeters<=CHECKIN_RADIUS_METERS;
+}
+const sid=todaysCheckinSessionId(prog);
+const nowIso=new Date().toISOString();
+try{
+const snapDoc=await fsGet(COL.ATTEND,sid);const snap={exists:!!snapDoc,data:()=>snapDoc||{}};
+if(!snap.exists){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">You haven\'t checked in yet today, so there is nothing to sign out from.</div>';
+if(btn){btn.disabled=false;btn.textContent='Sign Out'}
+return;
+}
+const marks=snap.data().marks||[];
+const idx=marks.findIndex(m=>m.student===currentStudent.name);
+if(idx<0){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">You haven\'t checked in yet today, so there is nothing to sign out from.</div>';
+if(btn){btn.disabled=false;btn.textContent='Sign Out'}
+return;
+}
+if(marks[idx].checkedOutAt){
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700">You already signed out today at '+new Date(marks[idx].checkedOutAt).toLocaleTimeString()+'.</div>';
+renderAttendance(document.getElementById('mainContent'));
+return;
+}
+marks[idx]={...marks[idx],checkedOutAt:nowIso,outLat:lat,outLng:lng,outDistanceMeters:distanceMeters,outWithinRadius:withinRadius};
+await fsSetMarks(sid,marks);
+cacheMark(sid,{date:todayLocalStr(),programme:prog.programme,programmeId:prog.id},marks[idx]);
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700 font-semibold">Signed out at '+new Date(nowIso).toLocaleTimeString()+(distanceMeters!==null?' \u2014 '+distanceMeters+'m from '+esc(prog.venue):' (location captured; venue coordinates not yet set by staff)')+'</div>';
+renderAttendance(document.getElementById('mainContent'));
+}catch(e){
+if(btn){btn.disabled=false;btn.textContent='Sign Out'}
+if(statusEl)statusEl.innerHTML='<div class="p-3 bg-red-50 border border-red-100 rounded-lg text-xs text-red-700">Could not save your sign-out: '+esc(e.message)+'</div>';
+}
+}
+
+// ======================================================================
+// PAGES
+// ======================================================================
+function kpiCard(l,v,color){return '<div class="kpi-card kpi-'+color+' p-5 card-hover"><div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">'+l+'</div><div class="text-3xl font-extrabold text-gray-900 tracking-tight">'+v+'</div></div>'}
+
+function renderDashboard(c){
+const prog=myProgramme();
+const att=attendanceStats();
+const openReq=dataCache.requests.filter(r=>r.status!=='Resolved').length;
+const latestAnnouncement=[...dataCache.announcements].sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''))[0];
+let h='<div class="fade-in">';
+h+='<div class="mb-6 p-5 rounded-2xl border border-sky-100 bg-gradient-to-r from-sky-50 via-white to-indigo-50"><h2 class="text-base font-bold text-gray-800">Welcome, '+esc((currentStudent.name||'').split(' ')[0])+'</h2><p class="text-sm text-gray-500 mt-0.5">'+(prog?esc(prog.programme):'You are not yet linked to a programme \u2014 contact your programme office')+'</p></div>';
+h+='<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">'+
+kpiCard('Attendance',att.pct!==null?att.pct+'%':'\u2014','blue')+
+kpiCard('Open Requests',openReq,'orange')+
+kpiCard('Results Published',dataCache.results.length,'emerald')+
+kpiCard('Documents',dataCache.documents.length,'purple')+
+'</div>';
+if(latestAnnouncement){
+h+='<div class="bg-white rounded-xl border border-gray-100 p-5 mb-6"><div class="flex items-center justify-between mb-2"><h3 class="text-sm font-semibold text-gray-700">Latest Announcement</h3><button onclick="nav(\'announcements\')" class="text-xs text-blue-600 font-semibold hover:underline">View all</button></div><div class="font-semibold text-gray-900 text-sm">'+esc(latestAnnouncement.title)+'</div><p class="text-sm text-gray-600 mt-1">'+esc(latestAnnouncement.body)+'</p></div>';
+}
+h+='<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">'+
+'<button onclick="nav(\'attendance\')" class="bg-white rounded-xl border border-gray-100 p-4 text-left card-hover"><div class="font-semibold text-gray-900 text-sm">Mark my attendance</div><div class="text-xs text-gray-500 mt-1">Check in when you reach the venue</div></button>'+
+'<button onclick="nav(\'support\')" class="bg-white rounded-xl border border-gray-100 p-4 text-left card-hover"><div class="font-semibold text-gray-900 text-sm">Need help?</div><div class="text-xs text-gray-500 mt-1">Log a support ticket</div></button>'+
+'<button onclick="nav(\'idcard\')" class="bg-white rounded-xl border border-gray-100 p-4 text-left card-hover"><div class="font-semibold text-gray-900 text-sm">Digital Student ID</div><div class="text-xs text-gray-500 mt-1">View your ID & QR code</div></button>'+
+'</div></div>';
+c.innerHTML=h;
+}
+
+function renderProfile(c){
+const s=currentStudent;
+let h='<div class="fade-in max-w-2xl"><div class="bg-white rounded-xl border border-gray-100 p-6">';
+h+='<div class="flex items-center gap-4 mb-6"><div class="w-16 h-16 rounded-full bg-[#2980b9] flex items-center justify-center text-white text-xl font-bold">'+esc((s.name||'ST').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase())+'</div><div><div class="text-xl font-bold text-gray-900">'+esc(s.name)+'</div><div class="text-xs text-gray-400 font-mono">'+esc(s.studentNumber||'')+'</div></div></div>';
+h+='<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">'+
+'<div><div class="text-xs text-gray-400 mb-1">Email</div><div class="font-medium text-gray-800">'+esc(s.email||'Not on file')+'</div></div>'+
+'<div><div class="text-xs text-gray-400 mb-1">Phone</div><div class="font-medium text-gray-800">'+esc(s.phone||'Not on file')+'</div></div>'+
+'<div><div class="text-xs text-gray-400 mb-1">ID Number</div><div class="font-medium text-gray-800">'+esc(s.idNumber||'Not on file')+'</div></div>'+
+'<div><div class="text-xs text-gray-400 mb-1">Registered</div><div class="font-medium text-gray-800">'+(s.dateRegistered?new Date(s.dateRegistered).toLocaleDateString():'\u2014')+'</div></div>'+
+'</div>';
+h+='<div class="mt-6 p-3 bg-amber-50 border border-amber-100 rounded-lg text-xs text-amber-800">These details are managed by ATCE staff and cannot be edited here. If something is incorrect, submit a profile update request.</div>';
+h+='<button onclick="openRequestForm(\'Profile Update\')" class="mt-4 px-4 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700">Request a Profile Update</button>';
+h+='</div></div>';
+c.innerHTML=h;
+}
+
+function renderProgramme(c){
+const prog=myProgramme();
+let h='<div class="fade-in max-w-3xl">';
+if(!prog){h+='<div class="bg-white rounded-xl border border-gray-100 p-10 text-center text-gray-400">You are not yet linked to a programme. Contact your programme office.</div></div>';c.innerHTML=h;return}
+h+='<div class="bg-white rounded-xl border border-gray-100 p-6"><h2 class="text-xl font-bold text-gray-900 mb-1">'+esc(prog.programme)+'</h2><div class="flex flex-wrap gap-2 mb-5"><span class="badge '+(prog.accreditationStatus==='Full Accreditation'?'badge-green':'badge-yellow')+'">'+esc(prog.accreditationStatus||'Not available')+'</span><span class="badge badge-blue">'+esc(prog.operationalMode||prog.venue||'')+'</span></div>';
+h+='<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">'+
+[['SAQA ID',prog.saqaId],['NQF Level',prog.nqf],['Credits',prog.credits],['Duration',prog.duration],['Teaching Site',prog.venue],['Facilitator',prog.facilitator]].map(([l,v])=>'<div><div class="text-xs text-gray-400 mb-1">'+l+'</div><div class="font-medium text-gray-800">'+esc(v||'Not available')+'</div></div>').join('')+
+'</div></div></div>';
+c.innerHTML=h;
+}
+
+function renderAttendance(c){
+const att=attendanceStats();
+const hist=myHistoricalRegisters();
+const prog=myProgramme();
+let h='<div class="fade-in">';
+if(prog){
+const already=myTodayCheckin(prog);
+const checkedOut=already&&already.checkedOutAt;
+let actionBtn,statusBox;
+if(!already){
+actionBtn='<button id="checkinBtn" onclick="markMyAttendance()" class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-sky-500 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all">Mark My Attendance</button>';
+statusBox='';
+}else if(!checkedOut){
+actionBtn='<button id="signoutBtn" onclick="markMySignOut()" class="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-amber-500 text-white text-sm font-bold rounded-xl hover:shadow-lg transition-all">Sign Out</button>';
+statusBox='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700">Marked present today at '+new Date(already.checkedInAt).toLocaleTimeString()+(already.distanceMeters!==null&&already.distanceMeters!==undefined?' \u2014 '+already.distanceMeters+'m from venue':'')+'. Remember to sign out when you leave.</div>';
+}else{
+actionBtn='<button disabled class="px-5 py-2.5 bg-emerald-100 text-emerald-700 text-sm font-bold rounded-xl">Day Complete</button>';
+statusBox='<div class="p-3 bg-emerald-50 border border-emerald-100 rounded-lg text-xs text-emerald-700">Checked in at '+new Date(already.checkedInAt).toLocaleTimeString()+(already.distanceMeters!==null&&already.distanceMeters!==undefined?' ('+already.distanceMeters+'m from venue)':'')+' &middot; Signed out at '+new Date(already.checkedOutAt).toLocaleTimeString()+(already.outDistanceMeters!==null&&already.outDistanceMeters!==undefined?' ('+already.outDistanceMeters+'m from venue)':'')+'</div>';
+}
+h+='<div class="bg-white rounded-xl border border-gray-100 p-5 mb-6"><div class="flex items-center justify-between flex-wrap gap-3"><div><h3 class="text-sm font-semibold text-gray-700">Mark My Attendance</h3><p class="text-xs text-gray-400 mt-0.5">Check in when you arrive at '+esc(prog.venue||'your venue')+', and sign out when you leave. Your device must have Location Services turned on.</p></div>'+actionBtn+'</div><div id="checkinStatus" class="mt-3">'+statusBox+'</div></div>';
+}
+h+='<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">'+kpiCard('Attendance Rate',att.pct!==null?att.pct+'%':'No data','blue')+kpiCard('Sessions Present',att.present,'emerald')+kpiCard('Total Sessions',att.total,'purple')+'</div>';
+h+='<div class="bg-white rounded-xl border border-gray-100 overflow-hidden mb-6"><div class="px-5 py-4 border-b border-gray-100"><h3 class="text-sm font-semibold text-gray-700">Class Attendance</h3></div>';
+h+=att.sessions.length?'<div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-gray-50 border-b border-gray-100"><tr><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Date</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Programme</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Check In</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Sign Out</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Status</th></tr></thead><tbody>'+att.sessions.map(s=>'<tr class="border-b border-gray-50"><td class="px-4 py-2.5 font-medium text-gray-900">'+esc(s.date)+'</td><td class="px-4 py-2.5 text-gray-600">'+esc(s.programme)+'</td><td class="px-4 py-2.5 text-xs text-gray-500">'+(s.checkedInAt?new Date(s.checkedInAt).toLocaleTimeString():'\u2014')+'</td><td class="px-4 py-2.5 text-xs text-gray-500">'+(s.checkedOutAt?new Date(s.checkedOutAt).toLocaleTimeString():'\u2014')+'</td><td class="px-4 py-2.5"><span class="badge '+(s.status==='Present'?'badge-green':s.status==='Absent'?'badge-red':'badge-yellow')+'">'+esc(s.status)+'</span></td></tr>').join('')+'</tbody></table></div>':'<div class="p-10 text-center text-sm text-gray-400">No class attendance recorded yet.</div>';
+h+='</div>';
+if(hist.length){
+h+='<div class="bg-white rounded-xl border border-gray-100 overflow-hidden"><div class="px-5 py-4 border-b border-gray-100"><h3 class="text-sm font-semibold text-gray-700">Historical Registers</h3></div><div class="divide-y divide-gray-50">'+hist.map(r=>'<div class="p-4 flex items-center justify-between"><div><div class="text-sm font-semibold text-gray-800">'+esc(r.title||r.month)+'</div><div class="text-xs text-gray-400">'+esc(r.programme||'')+'</div></div><span class="badge '+(r.type==='Workplace Register'?'badge-purple':'badge-blue')+'">'+esc(r.month)+'</span></div>').join('')+'</div></div>';
+}
+h+='</div>';
+c.innerHTML=h;
+}
+
+function renderResults(c){
+const list=[...dataCache.results].sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+let h='<div class="fade-in"><div class="bg-white rounded-xl border border-gray-100 overflow-hidden">';
+h+=list.length?'<div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-gray-50 border-b border-gray-100"><tr><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Module</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Outcome</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Date</th></tr></thead><tbody>'+list.map(r=>'<tr class="border-b border-gray-50"><td class="px-4 py-3 font-medium text-gray-900">'+esc(r.module)+'</td><td class="px-4 py-3"><span class="badge '+(r.outcome==='Competent'||r.outcome==='Pass'?'badge-green':'badge-red')+'">'+esc(r.outcome)+(r.mark?' &middot; '+esc(r.mark)+'%':'')+'</span></td><td class="px-4 py-3 text-xs text-gray-400">'+esc(r.date||'')+'</td></tr>').join('')+'</tbody></table></div>':'<div class="p-12 text-center text-sm text-gray-400">No results have been published yet. Check back once your marks are released.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+}
+
+function renderFees(c){
+const prog=myProgramme();
+const paid=dataCache.feeLedger.reduce((s,f)=>s+(Number(f.amount)||0),0);
+const total=prog?Number(prog.onceOffFee||0):0;
+const balance=total-paid;
+let h='<div class="fade-in">';
+h+='<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">'+kpiCard('Total Programme Fee',total?fmtCurrency(total):'Not available','blue')+kpiCard('Paid to Date',fmtCurrency(paid),'emerald')+kpiCard('Balance',total?fmtCurrency(Math.max(balance,0)):'\u2014','orange')+'</div>';
+if(prog){
+h+='<div class="bg-white rounded-xl border border-gray-100 p-5 mb-6"><h3 class="text-sm font-semibold text-gray-700 mb-3">Fee Schedule &mdash; '+esc(prog.programme)+'</h3><div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">'+
+[['Application Fee',prog.applicationFee],['Registration Fee',prog.registrationFee],['Once-Off Fee',prog.onceOffFee],['Monthly Instalment',prog.monthlyInstalment]].map(([l,v])=>'<div><div class="text-xs text-gray-400 mb-1">'+l+'</div><div class="font-bold text-gray-800">'+(v?fmtCurrency(v):'Not available')+'</div></div>').join('')+
+'</div></div>';
+}
+h+='<div class="bg-white rounded-xl border border-gray-100 overflow-hidden"><div class="px-5 py-4 border-b border-gray-100"><h3 class="text-sm font-semibold text-gray-700">Payment History</h3></div>';
+h+=dataCache.feeLedger.length?'<div class="overflow-x-auto"><table class="w-full text-sm"><thead class="bg-gray-50 border-b border-gray-100"><tr><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Date</th><th class="text-left px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Method</th><th class="text-right px-4 py-3 text-gray-600 text-xs uppercase font-semibold">Amount</th></tr></thead><tbody>'+[...dataCache.feeLedger].sort((a,b)=>(b.date||'').localeCompare(a.date||'')).map(f=>'<tr class="border-b border-gray-50"><td class="px-4 py-3 text-gray-600">'+esc(f.date||'')+'</td><td class="px-4 py-3 text-gray-600">'+esc(f.method||'')+'</td><td class="px-4 py-3 text-right font-bold text-emerald-700">'+fmtCurrency(f.amount)+'</td></tr>').join('')+'</tbody></table></div>':'<div class="p-10 text-center text-sm text-gray-400">No payments logged yet.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+}
+
+function renderDocuments(c){
+let h='<div class="fade-in"><div class="bg-white rounded-xl border border-gray-100 overflow-hidden">';
+h+=dataCache.documents.length?'<div class="divide-y divide-gray-50">'+dataCache.documents.map(d=>'<div class="p-4 flex items-center justify-between"><div><div class="font-semibold text-gray-900 text-sm">'+esc(d.title)+'</div><div class="text-xs text-gray-400">'+(d.createdAt?new Date(d.createdAt).toLocaleDateString():'')+'</div></div><a href="'+esc(d.url)+'" target="_blank" class="px-3 py-1.5 bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold rounded-lg">Open</a></div>').join('')+'</div>':'<div class="p-12 text-center text-sm text-gray-400">No documents have been shared with you yet.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+}
+
+function renderTimetable(c){
+const prog=myProgramme();
+let h='<div class="fade-in max-w-2xl"><div class="bg-white rounded-xl border border-gray-100 p-6">';
+h+='<h3 class="text-sm font-semibold text-gray-700 mb-4">Programme Schedule</h3>';
+if(prog){
+h+='<div class="grid grid-cols-2 gap-4 text-sm">'+
+[['Start Date',prog.startDate],['End Date',prog.endDate],['Planned Intake',prog.plannedIntake],['Venue',prog.venue],['Facilitator',prog.facilitator],['Delivery Mode',prog.operationalMode]].map(([l,v])=>'<div><div class="text-xs text-gray-400 mb-1">'+l+'</div><div class="font-medium text-gray-800">'+esc(v||'Not yet planned')+'</div></div>').join('')+
+'</div><div class="mt-5 p-3 bg-blue-50 border border-blue-100 rounded-lg text-xs text-blue-800">A detailed weekly timetable is not yet published for this programme. This overview reflects your programme\'s current planning data.</div>';
+}else{
+h+='<div class="text-sm text-gray-400">Not linked to a programme yet.</div>';
+}
+h+='</div></div>';
+c.innerHTML=h;
+}
+
+function renderAnnouncements(c){
+const list=[...dataCache.announcements].sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
+let h='<div class="fade-in"><div class="bg-white rounded-xl border border-gray-100 overflow-hidden">';
+h+=list.length?'<div class="divide-y divide-gray-50">'+list.map(a=>'<div class="p-4"><div class="font-semibold text-gray-900 text-sm">'+esc(a.title)+'</div><p class="text-sm text-gray-600 mt-1">'+esc(a.body)+'</p><div class="text-[10px] text-gray-400 mt-2">'+(a.createdAt?new Date(a.createdAt).toLocaleString():'')+' &middot; '+esc(a.postedBy||'Staff')+'</div></div>').join('')+'</div>':'<div class="p-12 text-center text-sm text-gray-400">No announcements yet.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+localStorage.setItem('atce_portal_last_seen_'+currentStudent.id,new Date().toISOString());
+updateNotifBadge();
+}
+
+function renderNotifications(c){
+const items=[];
+dataCache.announcements.forEach(a=>items.push({type:'Announcement',title:a.title,body:a.body,date:a.createdAt}));
+dataCache.requests.filter(r=>r.staffReply).forEach(r=>items.push({type:'Request Reply',title:'Reply to your request',body:r.staffReply,date:r.respondedAt}));
+items.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+let h='<div class="fade-in"><div class="bg-white rounded-xl border border-gray-100 overflow-hidden">';
+h+=items.length?'<div class="divide-y divide-gray-50">'+items.map(i=>'<div class="p-4"><span class="badge '+(i.type==='Announcement'?'badge-blue':'badge-green')+'">'+i.type+'</span><div class="font-semibold text-gray-900 text-sm mt-1.5">'+esc(i.title)+'</div><p class="text-sm text-gray-600 mt-1">'+esc(i.body)+'</p><div class="text-[10px] text-gray-400 mt-2">'+(i.date?new Date(i.date).toLocaleString():'')+'</div></div>').join('')+'</div>':'<div class="p-12 text-center text-sm text-gray-400">Nothing here yet.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+localStorage.setItem('atce_portal_last_seen_'+currentStudent.id,new Date().toISOString());
+updateNotifBadge();
+}
+function updateNotifBadge(){
+const lastSeen=localStorage.getItem('atce_portal_last_seen_'+(currentStudent?currentStudent.id:''))||'1970-01-01';
+const count=dataCache.announcements.filter(a=>(a.createdAt||'')>lastSeen).length+dataCache.requests.filter(r=>r.staffReply&&(r.respondedAt||'')>lastSeen).length;
+const b=document.getElementById('notifBadge');
+if(!b)return;
+if(count>0){b.textContent=count>9?'9+':count;b.classList.remove('hidden')}else{b.classList.add('hidden')}
+}
+
+// ---- Support / Helpdesk + Student Requests (two-way flow back to the Dashboard) ----
+function renderSupport(c){renderRequestPage(c,'helpdesk',['Technical Issue','Login Problem','General Question','Other'])}
+function renderRequests(c){renderRequestPage(c,'request',['Statement of Results','Proof of Registration','Deferral / Leave of Absence','Profile Update','Other'])}
+function renderRequestPage(c,kind,categories){
+const mine=dataCache.requests.filter(r=>(r.kind||'request')===kind).sort((a,b)=>(b.createdAt||'').localeCompare(a.createdAt||''));
+let h='<div class="fade-in"><div class="bg-white rounded-xl border border-gray-100 p-5 mb-6"><h3 class="text-sm font-semibold text-gray-700 mb-3">'+(kind==='helpdesk'?'Log a Support Ticket':'Submit a Request')+'</h3>';
+h+='<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4"><label><span class="block text-xs font-semibold text-gray-600 mb-1">Category</span><select id="reqCat_'+kind+'" class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-lg">'+categories.map(cat=>'<option>'+cat+'</option>').join('')+'</select></label></div>';
+h+='<label><span class="block text-xs font-semibold text-gray-600 mb-1">Message</span><textarea id="reqMsg_'+kind+'" rows="3" class="w-full px-3 py-2.5 text-sm border border-gray-200 rounded-lg"></textarea></label>';
+h+='<button onclick="submitRequest(\''+kind+'\')" class="mt-4 px-5 py-2.5 bg-blue-600 text-white text-sm font-bold rounded-lg hover:bg-blue-700">Submit</button></div>';
+h+='<div class="bg-white rounded-xl border border-gray-100 overflow-hidden"><div class="px-5 py-4 border-b border-gray-100"><h3 class="text-sm font-semibold text-gray-700">Your History</h3></div>';
+h+=mine.length?'<div class="divide-y divide-gray-50">'+mine.map(r=>{
+const statusBadge=r.status==='Resolved'?'badge-green':(r.status==='In Progress'?'badge-blue':'badge-orange');
+return '<div class="p-4"><div class="flex items-center gap-2 flex-wrap"><span class="badge badge-gray">'+esc(r.category)+'</span><span class="badge '+statusBadge+'">'+esc(r.status||'Open')+'</span></div><p class="text-sm text-gray-700 mt-1.5">'+esc(r.message)+'</p>'+(r.staffReply?'<div class="mt-2 p-2 bg-blue-50 rounded-lg text-xs text-blue-800"><strong>Staff reply:</strong> '+esc(r.staffReply)+'</div>':'')+'<div class="text-[10px] text-gray-400 mt-2">'+(r.createdAt?new Date(r.createdAt).toLocaleString():'')+'</div></div>'
+}).join('')+'</div>':'<div class="p-10 text-center text-sm text-gray-400">Nothing submitted yet.</div>';
+h+='</div></div>';
+c.innerHTML=h;
+}
+function openRequestForm(category){
+nav('requests');
+setTimeout(()=>{const sel=document.getElementById('reqCat_request');if(sel){for(const o of sel.options){if(o.value===category){sel.value=category;break}}}},50);
+}
+async function submitRequest(kind){
+const catEl=document.getElementById('reqCat_'+kind),msgEl=document.getElementById('reqMsg_'+kind);
+const category=catEl.value,message=(msgEl.value||'').trim();
+if(!message){alert('Please describe your request.');return}
+const data={studentId:currentStudent.id,kind,category,message,status:'Open',createdAt:new Date().toISOString()};
+try{
+if(!isReady())throw Object.assign(new Error('offline'),{code:'network'});
+await fsAdd(COL.REQUESTS,data);
+dataCache.requests.push({id:uid(),...data});
+}catch(e){
+if(e&&e.authExpired){doStudentLogout(true);showLoginError('Your session expired. Please sign in again.');return}
+if(e&&e.code==='network'){
+const q=getQ();q.push({data});LS.set(QK,q);
+dataCache.requests.push({id:uid(),...data,status:'Queued \u2014 sends on next sync'});
+alert('No connection right now. Your request is saved on this device and will be sent when you tap Sync.');
+}else{alert('Could not submit your request: '+(e&&e.message));return}
+}
+dfSave();dfPill();
+msgEl.value='';
+kind==='helpdesk'?renderSupport(document.getElementById('mainContent')):renderRequests(document.getElementById('mainContent'));
+}
+
+// ---- Digital Student ID + QR code ----
+function renderIdCard(c){
+const s=currentStudent;const prog=myProgramme();
+let h='<div class="fade-in max-w-md mx-auto">';
+h+='<div class="id-card rounded-2xl p-6 text-white shadow-xl">';
+h+='<div class="flex items-center justify-between mb-6"><div class="text-xs font-bold uppercase tracking-widest text-sky-300">ATCE Student ID</div><div class="text-xs text-sky-300">2026</div></div>';
+h+='<div class="flex items-center gap-4 mb-5"><div class="w-16 h-16 rounded-full bg-white/15 border-2 border-white/30 flex items-center justify-center text-xl font-bold">'+esc((s.name||'ST').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase())+'</div><div><div class="font-bold text-lg leading-tight">'+esc(s.name)+'</div><div class="text-xs text-sky-200 font-mono">'+esc(s.studentNumber||'')+'</div></div></div>';
+h+='<div class="text-xs text-sky-200 mb-4">'+esc(prog?prog.programme:'No programme linked')+'</div>';
+h+='<div class="bg-white rounded-xl p-3 flex items-center justify-center"><canvas id="idQrCanvas"></canvas></div>';
+h+='</div><p class="text-xs text-gray-400 text-center mt-4">Present this QR code for identification at ATCE facilities.</p></div>';
+c.innerHTML=h;
+const payload=JSON.stringify({studentNumber:s.studentNumber||'',name:s.name||'',id:s.id});
+drawQR(document.getElementById('idQrCanvas'),payload,180);
+}
+
+// ======================================================================
+// STARTUP
+// ======================================================================
+(function(){
+const fbStat=document.getElementById('fbStatus');
+if('serviceWorker' in navigator&&location.protocol!=='file:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+const sess=LS.get(SESS),cache=LS.get(CACHE);
+if(sess&&sess.refreshToken&&cache&&cache.student){
+refreshTok=sess.refreshToken;authUid=sess.uid;
+currentStudent=cache.student;
+dataCache=Object.assign(dataCache,cache.data||{});
+dfSyncedAt=cache.syncedAt||0;
+startPortalSession(false);
+return;
+}
+if(fbStat)fbStat.textContent=navigator.onLine===false?'Offline \u2014 connect once to sign in':'Ready \u2014 no background downloads';
+document.getElementById('loginEmail').focus();
+document.getElementById('loginPassword').addEventListener('keydown',e=>{if(e.key==='Enter')doStudentLogin()});
+if('serviceWorker' in navigator&&location.protocol!=='file:'){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+})();
+
+</script>
+</body>
+</html>
